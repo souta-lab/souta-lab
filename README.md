@@ -4,7 +4,7 @@
 
 TypeScript / React / Astro / Python / Go — Frontend to Backend, design to deploy.
 
-🔗 [souta-lab.net](https://souta-lab.net) · 📧 via GitHub Profile
+📧 via GitHub Profile
 
 ---
 
@@ -12,7 +12,7 @@ TypeScript / React / Astro / Python / Go — Frontend to Backend, design to depl
 
 | Project | Stack | Description |
 |---------|-------|-------------|
-| [astro-souta-lab-net](https://github.com/souta-lab/astro-souta-lab-net) | Astro | Personal website — souta-lab.net |
+| [astro-souta-lab-net](https://github.com/souta-lab/astro-souta-lab-net) | Astro | Personal website (Astro) |
 | [bgm-generator](https://github.com/souta-lab/bgm-generator) | Web Audio API | Browser-based infinite BGM generator |
 | [math-drill](https://github.com/souta-lab/math-drill) | Flutter / Dart | Math drill app for elementary arithmetic |
 | [screenshotter-for-chrome](https://github.com/souta-lab/screenshotter-for-chrome) | JS / Chrome Ext | Simple screenshotting tool for Chrome |
