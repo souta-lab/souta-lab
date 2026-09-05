@@ -1,6 +1,6 @@
 # souta-lab
 
-**Full-stack Engineer (Freelance) — Okayama, Japan (Remote OK)**
+**Full-stack Engineer — Okayama, Japan (Remote OK)**
 
 TypeScript / React / Astro / Python / Go — Frontend to Backend, design to deploy.
 
@@ -25,4 +25,4 @@ TypeScript / React / Astro / Python / Go — Frontend to Backend, design to depl
 
 ---
 
-*Open to freelance and full-time opportunities — feel free to reach out.*
+*Open to full-time opportunities — feel free to reach out.*
