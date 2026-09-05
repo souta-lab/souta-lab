@@ -23,6 +23,10 @@ TypeScript / React / Astro / Python / Go — Frontend to Backend, design to depl
 
 `TypeScript` `React` `Next.js` `Astro` `Python` `Go` `Flutter` `Cloudflare` `Bun`
 
+## Affiliations
+
+- [EdamAme-x](https://github.com/EdamAme-x) — collaborator (CDN-Files, unline)
+
 ---
 
 *Open to full-time opportunities — feel free to reach out.*
