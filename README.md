@@ -4,23 +4,26 @@
 
 TypeScript / React / Astro / Python / Go — Frontend to Backend, design to deploy.
 
-📧 via GitHub Profile
+Contact: [open an issue](https://github.com/souta-lab/souta-lab/issues/new) on this repo
 
 ---
 
 ## Featured Projects
 
-| Project | Stack | Description |
-|---------|-------|-------------|
-| [astro-souta-website](https://github.com/souta-lab/astro-souta-website) | Astro | Personal website (Astro) |
-| [bgm-generator](https://github.com/souta-lab/bgm-generator) | Web Audio API | Browser-based infinite BGM generator |
-| [math-drill](https://github.com/souta-lab/math-drill) | Flutter / Dart | Math drill app for elementary arithmetic |
-| [screenshotter-for-chrome](https://github.com/souta-lab/screenshotter-for-chrome) | JS / Chrome Ext | Simple screenshotting tool for Chrome |
-| [brain-training-app](https://github.com/souta-lab/brain-training-app) | React / Cloudflare Pages | Brain training game |
-| [psi-training](https://github.com/souta-lab/psi-training) | React / Vite | PSI (Processing Speed Index) training — symbol-match & coding tasks |
-| [multitask-training](https://github.com/souta-lab/multitask-training) | JS / Single-file | Multitask training game |
-| [xorshift-random](https://github.com/souta-lab/xorshift-random) | JS | Fast non-cryptographic PRNG |
-| [dotfiles](https://github.com/souta-lab/dotfiles) | SwayFX / Wayland | Desktop dotfiles (sway, waybar, ghostty) |
+| Project | Stack | Why it matters |
+|---------|-------|----------------|
+| [psi-training](https://github.com/souta-lab/psi-training) ([demo](https://souta-lab.github.io/psi-training/)) | React / Vite | PSI training app with symbol-match and coding tasks; live demo you can try in the browser |
+| [bgm-generator](https://github.com/souta-lab/bgm-generator) ([demo](https://souta-lab.github.io/bgm-generator/)) | Web Audio API | Infinite procedural BGM generated entirely in the browser, no audio files needed |
+| [astro-souta-website](https://github.com/souta-lab/astro-souta-website) | Astro | Personal website built with Astro, the hub for my work and writing |
+| [brain-training-app](https://github.com/souta-lab/brain-training-app) | React / Cloudflare Pages | Brain training game deployed on Cloudflare Pages |
+
+## Others
+
+- [math-drill](https://github.com/souta-lab/math-drill) — Math drill app for elementary arithmetic (Flutter / Dart)
+- [screenshotter-for-chrome](https://github.com/souta-lab/screenshotter-for-chrome) — Simple screenshotting tool for Chrome
+- [multitask-training](https://github.com/souta-lab/multitask-training) — Multitask training game in a single HTML file
+- [xorshift-random](https://github.com/souta-lab/xorshift-random) — Fast non-cryptographic PRNG in JS
+- [dotfiles](https://github.com/souta-lab/dotfiles) — Desktop dotfiles (sway, waybar, ghostty)
 
 ## Tech Stack
 
@@ -28,8 +31,8 @@ TypeScript / React / Astro / Python / Go — Frontend to Backend, design to depl
 
 ## Affiliations
 
-- [nissmick](https://github.com/nissmick) (Rurines) — SNS development
-- [eQuake-Live](https://github.com/eQuake-Live) (eQuake) — earthquake early-warning
+- [nissmick](https://github.com/nissmick) (Rurines, SNS) — contributed dependency updates and docs to nissmick-core
+- [eQuake-Live](https://github.com/eQuake-Live) (eQuake) — member of the earthquake early-warning project
 
 ---
 
