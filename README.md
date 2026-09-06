@@ -28,6 +28,8 @@ TypeScript / React / Astro / Python / Go — Frontend to Backend, design to depl
 
 ## Affiliations
 
+- [nissmick](https://github.com/nissmick) (Rurines) — SNS development
+- [eQuake-Live](https://github.com/eQuake-Live) (eQuake) — earthquake early-warning
 - [EdamAme-x](https://github.com/EdamAme-x) — collaborator (CDN-Files, unline)
 
 ---
