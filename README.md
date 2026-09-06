@@ -31,7 +31,7 @@ Contact: [open an issue](https://github.com/souta-lab/souta-lab/issues/new) on t
 
 ## Affiliations
 
-- [nissmick](https://github.com/nissmick) (Rurines, SNS) — contributed dependency updates and docs to nissmick-core
+- [nissmick](https://github.com/nissmick) (Rurines, SNS) — past contributor to nissmick-core
 - [eQuake-Live](https://github.com/eQuake-Live) (eQuake) — member of the earthquake early-warning project
 
 ---
