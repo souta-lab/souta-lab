@@ -1,1 +1,606 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>全商プログラミング1級 本番形式模試</title><meta name="description" content="全商情報処理検定プログラミング1級の近年形式を分析して作成した非公式オリジナル模擬試験10回。"></head><body><noscript>JavaScriptを有効にしてください。</noscript><script>(async()=>{const names=['v5-0.txt', 'v5-1.txt', 'v5-2.txt', 'v5-3.txt', 'v5-4.txt', 'v5-5.txt'];const parts=await Promise.all(names.map(async n=>{const r=await fetch(n,{cache:'no-store'});if(!r.ok)throw new Error(n+' の取得に失敗');return r.text()}));const b=Uint8Array.from(atob(parts.join('')),c=>c.charCodeAt(0));const ab=await new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();const raw=new Uint8Array(ab);const digest=await crypto.subtle.digest('SHA-256',raw);const hex=[...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,'0')).join('');if(hex!=='96a64c335cb849495cade7d344ad2b2290e71ec618e21782d014ab0f691c30bc')throw new Error('V5データの整合性検証に失敗');const html=new TextDecoder().decode(raw);document.open();document.write(html);document.close()})().catch(e=>{document.body.innerHTML='<main style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;max-width:720px;margin:48px auto;padding:20px"><h1>読み込みに失敗しました</h1><p>ページを再読み込みしてください。</p><pre style="white-space:pre-wrap">'+String(e)+'</pre></main>'})</script></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f4f1ea">
+  <title>全商プログラミング1級 本番形式模試</title>
+  <style>:root{
+  --bg:#f1eee7;--panel:#fff;--paper:#fffefa;--ink:#171717;--mut:#68645c;--line:#bdb8ad;
+  --soft:#ece8df;--accent:#243d54;--accent2:#315a76;--ok:#166534;--bad:#9f1d20;--warn:#8a5a08;
+  --shadow:0 10px 30px rgba(45,39,31,.10);--serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65}
+button,select,input{font:inherit}button{cursor:pointer}.site-head{background:#faf8f3;border-bottom:1px solid #d9d4c9}.site-head__inner{max-width:1180px;margin:auto;padding:20px 20px 16px;display:flex;align-items:end;justify-content:space-between;gap:18px}.site-head h1{font-size:clamp(22px,3vw,34px);margin:2px 0 0;letter-spacing:-.02em}.site-head h1 span{font-weight:500;color:var(--mut);font-size:.74em}.kicker{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--mut)}
+.topnav{position:sticky;top:0;z-index:30;background:rgba(250,248,243,.94);backdrop-filter:blur(10px);border-bottom:1px solid #d9d4c9;display:flex;justify-content:center;gap:4px;padding:7px 10px}.topnav button{border:0;background:transparent;border-radius:999px;padding:8px 14px;font-weight:750;color:#5e5a52}.topnav button.on{background:#252525;color:#fff}.shell{max-width:1180px;margin:auto;padding:22px 18px 64px}.view{display:none}.view.on{display:block}
+.card{background:var(--panel);border:1px solid #d6d1c7;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(40,35,28,.03)}.hero{padding:34px;display:grid;grid-template-columns:1.35fr .65fr;gap:28px;align-items:center}.hero h2{font-size:clamp(30px,5vw,58px);line-height:1.12;margin:6px 0 14px;letter-spacing:-.04em}.hero p{color:var(--mut);max-width:740px}.hero-stat{border-left:1px solid #d3cec4;padding-left:28px}.hero-stat b{display:block;font-size:44px;line-height:1}.hero-stat span{display:block;color:var(--mut);margin-top:4px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.primary,.ghost{border-radius:10px;padding:10px 15px;font-weight:800;border:1px solid #a9a398}.primary{background:#252525;color:white;border-color:#252525}.ghost{background:white;color:#252525}.small{padding:7px 11px;font-size:13px}.section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:30px 0 12px}.section-title h2{margin:0;font-size:23px}.muted{color:var(--mut)}.fine{font-size:12px;color:var(--mut)}
+.format-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.format-chip{border:1px solid #c8c2b8;background:#faf8f3;border-radius:10px;padding:12px 10px;text-align:center}.format-chip b{display:block;font-size:18px}.format-chip span{font-size:12px;color:var(--mut)}.mock-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mock-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px}.mock-no{font-family:var(--serif);width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:1px solid #b6b0a5;font-size:22px}.mock-meta h3{margin:0 0 2px}.mock-meta p{margin:0;color:var(--mut);font-size:13px}.score-pill{font-weight:900;min-width:66px;text-align:right}.score-pill.pass{color:var(--ok)}.score-pill.fail{color:var(--bad)}
+.analysis-table{width:100%;border-collapse:collapse;background:white}.analysis-table th,.analysis-table td{border:1px solid #cbc5ba;padding:8px 9px;text-align:center;font-size:13px}.analysis-table th{background:#f1eee7}.analysis-table td:first-child{text-align:left;font-weight:800}.past-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.past-link{display:block;text-decoration:none;color:inherit;border:1px solid #cdc7bc;border-radius:10px;background:#fff;padding:11px}.past-link b{display:block}.past-link span{font-size:12px;color:var(--mut)}
+.exam-toolbar{position:sticky;top:52px;z-index:25;background:rgba(241,238,231,.96);backdrop-filter:blur(9px);border:1px solid #cec8bd;border-radius:12px;padding:8px 10px;margin-bottom:14px;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}.exam-tools{display:flex;gap:7px;align-items:center}.timer{font-variant-numeric:tabular-nums;font-weight:950;font-size:19px;text-align:center;letter-spacing:.04em}.timer.danger{color:var(--bad)}.page-tabs{display:flex;gap:4px;overflow:auto;scrollbar-width:none}.page-tabs::-webkit-scrollbar{display:none}.page-tabs button{min-width:34px;height:34px;padding:0;border:1px solid #c8c2b7;background:#fff;border-radius:7px}.page-tabs button.on{background:#252525;color:#fff;border-color:#252525}.page-wrap{display:flex;justify-content:center}.paper{position:relative;width:min(900px,100%);aspect-ratio:210/297;min-height:1100px;background:var(--paper);box-shadow:var(--shadow);border:1px solid #bbb5aa;padding:42px 54px 52px;color:#111;font-family:var(--serif);font-size:15px;line-height:1.62}.paper-head{position:absolute;right:34px;top:15px;font-size:11px;letter-spacing:.04em}.paper-page{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-size:11px}.exam-title{text-align:center;font-size:20px;letter-spacing:.12em;margin:8px 0 18px}.qblock{margin:0 0 17px}.qtitle{font-weight:800;font-size:16px;margin:0 0 7px}.qtitle .num{display:inline-block;margin-right:4px}.instruction{font-size:13.5px;margin:4px 0 10px}.term-list{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #555;margin:9px 0 18px}.term-list>div{padding:5px 7px;border-right:1px solid #777;border-bottom:1px solid #777;font-size:13px}.term-list>div:nth-child(4n){border-right:0}.term-list>div:nth-last-child(-n+4){border-bottom:0}.definition-list{display:grid;gap:6px}.definition{display:grid;grid-template-columns:26px 1fr;gap:7px}.definition b{font-family:var(--sans)}.ab-grid{display:grid;grid-template-columns:.78fr 1.6fr;gap:14px}.ab-box{border:1px solid #777}.ab-box h4{font-family:var(--sans);font-size:12px;margin:0;padding:3px 7px;background:#f0f0ed;border-bottom:1px solid #777}.ab-box ol{margin:6px 8px 8px 28px;padding:0;font-size:12.7px}.ab-box li{padding:2px 0}.bgroup{padding:6px 9px 8px;font-size:12.7px;display:grid;gap:4px}.bgroup>div{display:grid;grid-template-columns:28px 1fr;gap:2px}.bgroup b{font-family:var(--sans)}.mcq{margin:10px 0 14px}.mcq .stem{margin-bottom:5px}.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;font-size:13px}.choice{padding:4px 6px;border-top:1px solid #aaa}.answer-group{margin:10px 0 12px;border-top:1.5px solid #222;border-bottom:1.5px solid #222;padding:6px 8px;font-size:12.5px}.answer-group h4{font-family:var(--sans);font-size:11.5px;margin:0 0 5px}.answer-group-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px 10px}.blank{display:inline-block;min-width:44px;border:1px solid #333;border-radius:10px;padding:0 8px;text-align:center;font-family:var(--sans);font-size:12px;line-height:23px;background:white}.blank.wide{min-width:66px}.subhead{font-weight:700;margin:9px 0 4px}.spec-list{margin:4px 0 9px;padding-left:1.5em;font-size:13px}.data-layout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));border:1px solid #555;margin:6px 0 9px}.data-layout div{padding:5px;text-align:center;border-right:1px solid #777;font-size:12px}.data-layout div:last-child{border-right:0}.array-grid{border-collapse:collapse;margin:6px 0 9px;font-size:12px}.array-grid th,.array-grid td{border:1px solid #777;padding:4px 7px;text-align:center;min-width:42px}.array-grid th{background:#f2f1ed}.output-box{border:1px solid #666;margin:7px 0 9px;padding:7px 9px;font-family:monospace;white-space:pre-wrap;font-size:11.8px;line-height:1.45}.program{border:1px solid #777;padding:9px 12px;margin:8px 0;font-family:"SFMono-Regular",Consolas,monospace;font-size:12.4px;white-space:pre-wrap;line-height:1.52;background:#fff}.note{font-size:11.5px;margin-top:5px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}.compact{font-size:12.5px}
+.flow-paper{padding:30px 35px 45px}.flow-title{text-align:center;font-weight:800;margin:2px 0 10px}.flow-area{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}.flow-col{position:relative;display:flex;flex-direction:column;align-items:center}.flow-node{width:86%;min-height:38px;margin:8px 0;display:grid;place-items:center;text-align:center;padding:5px 9px;font-family:var(--serif);font-size:11.5px;line-height:1.35;position:relative;background:#fff}.flow-node:after{content:"";position:absolute;left:50%;bottom:-17px;width:1px;height:17px;background:#222}.flow-node:last-child:after{display:none}.flow-node.process{border:1.3px solid #222}.flow-node.io{border:1.3px solid #222;clip-path:polygon(10% 0,100% 0,90% 100%,0 100%);padding-left:11%;padding-right:11%}.flow-node.term{border:1.3px solid #222;border-radius:999px;width:60%}.flow-node.loop{border:1.3px solid #222;clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px),0 10px);font-weight:700}.flow-node.sub{border:1.3px solid #222;background:linear-gradient(90deg,transparent 8px,#222 8px,#222 9px,transparent 9px,transparent calc(100% - 9px),#222 calc(100% - 9px),#222 calc(100% - 8px),transparent calc(100% - 8px)),#fff}.flow-node.connector{width:34px;height:34px;min-height:34px;border:1.3px solid #222;border-radius:50%;font-family:var(--sans);font-weight:800;padding:0}.flow-node.blank-node{border:1.4px solid #222;min-height:42px;font-family:var(--sans);font-weight:800}.decision-wrap{width:100%;display:flex;flex-direction:column;align-items:center;margin:7px 0 10px;position:relative}.decision{width:72%;height:58px;background:#222;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);padding:1.3px;display:grid;place-items:center;margin:8px 0}.decision span{display:grid;place-items:center;width:100%;height:100%;background:#fff;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);font-size:10.5px;text-align:center;padding:7px 22%;line-height:1.2}.decision-labels{width:88%;display:flex;justify-content:space-between;font-size:9.5px;margin-top:-4px}.branch-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:94%;margin-top:0;position:relative}.branch-grid:before{content:"";position:absolute;left:50%;top:-9px;width:1px;height:9px;background:#222}.branch-box{border-left:1px solid #222;padding:3px 6px;min-height:38px;text-align:center;font-size:10.4px;position:relative}.branch-box:last-child{border-left:0;border-right:1px solid #222}.branch-box:before{content:"";position:absolute;top:0;height:1px;background:#222;width:50%}.branch-box:first-child:before{left:50%}.branch-box:last-child:before{right:50%}.branch-join{width:94%;border-top:1px solid #222;height:8px;margin-top:0}.flow-caption{font-size:10.5px;text-align:center;color:#333;margin-top:6px}.flow-ref{font-size:11px;border:1px solid #777;padding:4px 7px;margin-bottom:6px;width:100%}.legend{display:flex;gap:10px;justify-content:center;font-size:10px;margin-top:8px}
+.paper[data-page="6"] .flow-node{margin:6px 0;min-height:34px}.paper[data-page="6"] .flow-node:after{bottom:-13px;height:13px}
+.paper[data-page="8"] .flow-title,.paper[data-page="10"] .flow-title{margin-bottom:4px;font-size:12px}
+.paper[data-page="8"] .flow-area{gap:12px}.paper[data-page="8"] .flow-node{min-height:28px;margin:3px 0;padding:3px 6px;font-size:10px;line-height:1.2}.paper[data-page="8"] .flow-node:after{bottom:-8px;height:8px}.paper[data-page="8"] .decision-wrap{margin:5px 0 7px}.paper[data-page="8"] .decision{width:72%;height:46px;margin:5px 0}.paper[data-page="8"] .decision span{font-size:8.8px;padding:5px 20%}.paper[data-page="8"] .decision-labels{margin-top:-8px;font-size:9px}.paper[data-page="8"] .branch-box{min-height:28px;font-size:9.2px;padding:2px 3px}.paper[data-page="8"] .branch-grid{gap:4px;margin-top:1px}.paper[data-page="8"] .branch-join{height:4px}
+.paper[data-page="10"]{padding:24px 28px 38px}.paper[data-page="10"] .flow-area{gap:8px}.paper[data-page="10"] .flow-node{min-height:21px;margin:1px 0;padding:2px 5px;font-size:8.8px;line-height:1.1}.paper[data-page="10"] .flow-node:after{bottom:-4px;height:4px}.paper[data-page="10"] .flow-node.term{width:54%}.paper[data-page="10"] .flow-node.connector{width:24px;height:24px;min-height:24px}.paper[data-page="10"] .flow-node.blank-node{min-height:27px}.paper[data-page="10"] .decision-wrap{margin:2px 0 3px}.paper[data-page="10"] .decision{width:72%;height:36px;margin:3px 0}.paper[data-page="10"] .decision span{font-size:7.5px;line-height:1.02;padding:4px 20%}.paper[data-page="10"] .decision-labels{margin-top:-5px;font-size:7.8px}.paper[data-page="10"] .branch-box{min-height:21px;font-size:8px;padding:1px 2px;line-height:1.1}.paper[data-page="10"] .branch-grid{gap:3px;margin-top:0}.paper[data-page="10"] .branch-join{height:3px}.paper[data-page="10"] .flow-ref{font-size:8.5px;padding:2px 4px;margin-bottom:2px}.paper[data-page="10"] .flow-caption{font-size:8px;margin-top:2px}.paper[data-page="10"] .legend{font-size:8px;margin-top:2px}
+
+.drawer{position:fixed;inset:0;z-index:80;pointer-events:none}.drawer[aria-hidden="false"]{pointer-events:auto}.drawer__scrim{position:absolute;inset:0;border:0;background:rgba(0,0,0,.38);opacity:0;transition:.2s}.drawer__panel{position:absolute;right:0;top:0;bottom:0;width:min(1020px,100vw);background:#faf8f3;transform:translateX(100%);transition:.25s;overflow:auto;box-shadow:-10px 0 30px rgba(0,0,0,.18)}.drawer[aria-hidden="false"] .drawer__scrim{opacity:1}.drawer[aria-hidden="false"] .drawer__panel{transform:none}.drawer__head{position:sticky;top:0;z-index:2;background:#faf8f3;border-bottom:1px solid #ccc6bb;padding:13px 16px;display:flex;justify-content:space-between;align-items:center}.drawer__head span{display:block;font-size:12px;color:var(--mut)}.sheet{font-family:var(--serif);background:#fff;width:calc(100% - 24px);margin:12px;border:1px solid #aaa;padding:22px}.sheet h3{text-align:center;letter-spacing:.14em;margin:0 0 15px}.sheet-grid{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:12px}.sheet-grid th,.sheet-grid td{border:1px solid #777;padding:5px;text-align:center}.sheet-grid th{background:#f0efeb}.sheet-grid select,.sheet-grid input{width:100%;min-width:48px;border:1px solid #999;background:#fff;padding:5px 4px;text-align:center;border-radius:4px}.sheet-score{font-weight:800}.sheet-actions{display:flex;gap:8px;margin-top:14px}.sheet-actions button{flex:1}
+.result-hero{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}.result-score{width:120px;height:120px;border-radius:50%;border:9px solid #ddd;display:grid;place-items:center;font-size:31px;font-weight:950}.result-score.pass{border-color:#7eaf8a;color:var(--ok)}.result-score.fail{border-color:#d69a9a;color:var(--bad)}.breakdown{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.break-item{background:#f5f2eb;border:1px solid #d2ccc1;border-radius:8px;padding:8px;text-align:center}.break-item b{display:block}.review-item{margin:10px 0;border:1px solid #d2ccc1;border-left:5px solid #aaa;border-radius:8px;background:#fff;padding:12px}.review-item.ok{border-left-color:var(--ok)}.review-item.ng{border-left-color:var(--bad)}.review-item h4{margin:0 0 5px}.review-answer{font-family:var(--sans);font-size:13px}.review-exp{margin-top:6px;color:#3c3933;font-size:13px}.topic-bars{display:grid;gap:8px}.topic-row{display:grid;grid-template-columns:140px 1fr 60px;gap:10px;align-items:center}.topic-track{height:9px;background:#e3ded5;border-radius:99px;overflow:hidden}.topic-track i{display:block;height:100%;background:#555}.topic-row span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+body.dark{--bg:#1f211f;--panel:#272a27;--paper:#fbfaf6;--ink:#f3f3ef;--mut:#b9b7b0;--line:#555}.dark .site-head,.dark .topnav{background:rgba(35,37,34,.96);border-color:#444}.dark .site-head h1,.dark .ghost{color:#eee}.dark .card,.dark .past-link{background:#292c29;border-color:#4e504d}.dark .ghost{background:#303330;border-color:#666}.dark .format-chip,.dark .break-item{background:#333633;border-color:#555}.dark .exam-toolbar{background:rgba(31,33,31,.96);border-color:#555}.dark .page-tabs button{background:#2a2c2a;color:#eee;border-color:#555}.dark .page-tabs button.on{background:#eee;color:#111}.dark .paper{color:#111}.dark .drawer__panel,.dark .drawer__head{background:#262925}.dark .sheet{color:#111}.dark .analysis-table{color:#111}
+
+.exam-layout{display:grid;grid-template-columns:minmax(0,900px) 330px;gap:14px;align-items:start;justify-content:center}.exam-main{min-width:0}.quick-sheet{position:sticky;top:116px;max-height:calc(100vh - 130px);overflow:auto;background:#fff;border:1px solid #bdb7ad;border-radius:10px;box-shadow:var(--shadow);padding:10px;color:#111}.quick-sheet-head{display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid #bbb;padding:2px 2px 8px;margin-bottom:8px;font-family:var(--sans)}.quick-sheet-head b{font-size:14px}.quick-sheet-head span{font-size:11px;color:#666}.quick-answer-list{display:grid;gap:6px}.quick-sec{font-family:var(--sans);font-size:11px;font-weight:800;margin-top:5px;border-top:1px solid #ddd;padding-top:5px}.quick-row{display:grid;grid-template-columns:46px 1fr;gap:6px;align-items:center;font-family:var(--sans);font-size:11px}.quick-row label{font-weight:700;text-align:right}.quick-row select,.quick-row input{width:100%;height:32px;border:1px solid #999;border-radius:4px;background:#fff;text-align:center}.quick-double{display:grid;grid-template-columns:1fr 1fr;gap:4px}.mobile-answer-title{display:none}.exam-mobile-spacer{display:none}.quick-answer-list.quick-mobile{display:none}
+@media(max-width:1050px){.exam-layout{grid-template-columns:minmax(0,1fr) 280px}.paper{font-size:14px}}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.hero-stat{border-left:0;border-top:1px solid #d3cec4;padding:18px 0 0}.format-grid{grid-template-columns:repeat(4,1fr)}.mock-grid{grid-template-columns:1fr}.past-grid{grid-template-columns:repeat(3,1fr)}.paper{min-height:0;aspect-ratio:auto;padding:34px 30px 48px}.flow-area{gap:10px}.breakdown{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){.quick-answer-list.quick-desktop{display:none}.quick-answer-list.quick-mobile{display:flex}.exam-layout{display:block}.exam-main{padding-bottom:138px}.quick-sheet{position:fixed;left:6px;right:6px;bottom:max(6px,env(safe-area-inset-bottom));top:auto;z-index:45;max-height:126px;overflow:auto;padding:7px 9px;border-radius:12px}.quick-sheet-head{padding-bottom:5px;margin-bottom:5px}.quick-sheet-head span{display:none}.quick-answer-list{display:flex;gap:7px;overflow-x:auto;padding-bottom:2px}.quick-sec{display:none}.quick-row{display:block;min-width:78px}.quick-row label{display:block;text-align:left;font-size:10px}.quick-row select,.quick-row input{height:34px}.quick-double{min-width:116px}.desktop-sheet-btn{display:none}.mobile-answer-title{display:block;font-size:11px}.exam-mobile-spacer{display:block;height:125px}}
+@media(max-width:560px){.site-head__inner{padding:14px}.site-head h1 span{display:block;margin-top:2px}.shell{padding:13px 9px 50px}.topnav{justify-content:flex-start;overflow:auto}.topnav button{white-space:nowrap}.format-grid{grid-template-columns:repeat(2,1fr)}.past-grid{grid-template-columns:repeat(2,1fr)}.exam-toolbar{top:49px;grid-template-columns:1fr auto}.page-tabs{grid-column:1/-1;order:3}.timer{text-align:right}.paper{padding:30px 18px 45px;font-size:13.7px}.paper-head{right:16px}.ab-grid,.two-col{grid-template-columns:1fr}.choices{grid-template-columns:1fr}.term-list{grid-template-columns:repeat(3,1fr)}.term-list>div:nth-child(4n){border-right:1px solid #777}.term-list>div:nth-child(3n){border-right:0}.flow-paper{padding:24px 9px 42px}.flow-area{grid-template-columns:1fr 1fr;gap:5px}.flow-node{width:94%;font-size:9.8px;padding:4px}.decision{width:76%;height:50px}.decision span{font-size:9px;padding:5px 18%}.sheet{padding:13px;margin:6px;width:calc(100% - 12px)}.result-hero{grid-template-columns:1fr}.result-score{margin:auto}.breakdown{grid-template-columns:repeat(2,1fr)}.topic-row{grid-template-columns:100px 1fr 45px;font-size:12px}}
+@media print{body{background:#fff}.site-head,.topnav,.exam-toolbar{display:none!important}.shell{max-width:none;padding:0}.paper{box-shadow:none;border:0;page-break-after:always;width:210mm;min-height:297mm;padding:16mm 17mm}.view{display:block}.view:not(#exam){display:none!important}}
+
+.sheet-scroll{overflow-x:auto;padding-bottom:4px}.official-sheet{min-width:780px;border-collapse:collapse;width:100%;table-layout:fixed;font-family:var(--serif)}.official-sheet th,.official-sheet td{border:1px solid #555;text-align:center;padding:0;height:62px}.official-sheet .sec{width:64px;border:0;font-weight:800;font-size:18px;text-align:left;padding-right:8px}.official-sheet .no{height:24px;font-size:12px;font-weight:500}.official-sheet .ans{height:54px}.official-sheet input,.official-sheet select{width:100%;height:100%;border:0;background:transparent;text-align:center;font-size:20px;font-family:var(--sans);outline:none}.official-sheet .double{display:grid;grid-template-columns:1fr 1fr;height:100%}.official-sheet .double>*+*{border-left:1px solid #555}.official-sheet .scorebox{border:0;width:72px;font-family:var(--sans);font-size:11px}.official-sheet .scorebox b{display:block;font-size:18px}.sheet-headline{text-align:center;margin:0 0 5px;font-size:12px}.sheet-subtitle{text-align:center;letter-spacing:.35em;font-size:22px;font-weight:800;margin-bottom:14px}.sheet-note{font-size:11px;margin-top:10px}.cover-paper{display:flex;flex-direction:column;justify-content:space-between;text-align:center;padding:60px 70px 55px}.cover-paper .cover-top{display:flex;justify-content:space-between;font-size:13px}.cover-paper .cover-title{margin:auto 0}.cover-paper .cover-title .year{font-size:22px;font-weight:700}.cover-paper .cover-title h2{font-size:38px;letter-spacing:.16em;margin:14px 0}.cover-paper .cover-title h3{font-size:30px;margin:8px 0}.cover-paper .notice{border:2px dotted #555;padding:18px 24px;text-align:left;width:88%;margin:35px auto 0}.cover-paper .notice b{display:block;text-align:center;letter-spacing:.25em;margin-bottom:10px}.cover-paper .notice ol{margin:0;padding-left:1.7em}.cover-paper .org{font-weight:700;font-size:17px}.cover-paper .candidate{margin-left:auto;border:1px solid #555;width:160px;height:70px;padding-top:6px;font-size:12px}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="site-head__inner">
+    <div>
+      <div class="kicker">非公式・オリジナル問題</div>
+      <h1>全商プログラミング1級 <span>本番形式模試</span></h1>
+    </div>
+    <button id="themeBtn" class="ghost small" type="button" aria-label="表示切替">表示</button>
+  </div>
+</header>
+<nav class="topnav" aria-label="メインメニュー">
+  <button data-view="home" class="on">ホーム</button>
+  <button data-view="mocks">模擬10回</button>
+  <button data-view="past">公式過去問</button>
+  <button data-view="analysis">形式分析</button>
+</nav>
+<main id="app" class="shell">
+  <section id="home" class="view on"></section>
+  <section id="mocks" class="view"></section>
+  <section id="past" class="view"></section>
+  <section id="analysis" class="view"></section>
+  <section id="exam" class="view"></section>
+  <section id="review" class="view"></section>
+</main>
+<div id="sheetDrawer" class="drawer" aria-hidden="true">
+  <button class="drawer__scrim" type="button" aria-label="閉じる"></button>
+  <aside class="drawer__panel">
+    <div class="drawer__head">
+      <div><b>解答用紙</b><span id="drawerExamTitle"></span></div>
+      <button id="closeSheet" class="ghost" type="button">閉じる</button>
+    </div>
+    <div id="answerSheet"></div>
+  </aside>
+</div>
+<script>'use strict';
+const KANA=['ア','イ','ウ','エ','オ','カ','キ','ク','ケ','コ','サ','シ','ス','セ','ソ','タ','チ','ツ','テ','ト','ナ','ニ','ヌ','ネ','ノ'];
+const SEC_POINTS={1:2,2:2,3:2,4:3,5:3,6:3,7:5};
+const EXAM_NAMES=['第1回','第2回','第3回','第4回','第5回','第6回','第7回','第8回','第9回','第10回'];
+const deepClone=o=>JSON.parse(JSON.stringify(o));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function seeded(seed){let x=(seed*2654435761)>>>0;return()=>{x^=x<<13;x^=x>>>17;x^=x<<5;return(x>>>0)/4294967296}}
+function shuffle(a,seed){const r=seeded(seed),b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function choiceBank(options,seed){
+  const mixed=shuffle(options,seed); const map={}; mixed.forEach((o,i)=>map[o.id]=KANA[i]);
+  return {mixed,map,html:`<div class="answer-group"><h4>＜解答群＞</h4><div class="answer-group-grid">${mixed.map((o,i)=>`<div>${KANA[i]}．${o.text}</div>`).join('')}</div></div>`};
+}
+function item(sec,no,answer,explanation,topic,opt={}){return {sec,no:String(no),answer:Array.isArray(answer)?answer.map(String):[String(answer)],explanation,topic,page:opt.page||null,kind:opt.kind||'select',choices:opt.choices||KANA.slice(0,15),orderSensitive:opt.orderSensitive!==false,label:opt.label||null}}
+function blank(n,wide=false){return `<span class="blank${wide?' wide':''}">(${n})</span>`}
+function pageShell(examNo,pageNo,content,cls=''){
+  return `<article class="paper ${cls}" data-page="${pageNo}"><div class="paper-head">模試 ${String(examNo).padStart(2,'0')}　1－${['❶','❷','❸','❹','❺','❻','❼','❽','❾','❿'][pageNo-1]}</div>${content}<div class="paper-page">－ ${pageNo} －</div></article>`;
+}
+function coverShell(examNo){return `<article class="paper cover-paper"><div class="cover-top"><span>無断転載禁止</span><span>プログラミング1級</span></div><div class="cover-title"><div class="year">本番形式模擬試験　第${examNo}回</div><h2>情報処理検定試験</h2><h3>〈プログラミング〉</h3><div style="font-size:24px;font-weight:700">第１級　試験問題</div><div class="notice"><b>注意事項</b><ol><li>試験開始の合図があるまで問題を見ない想定で利用してください。</li><li>問題は10ページあります。</li><li>解答はすべて解答用紙に記入してください。</li><li>電卓などの計算用具を使わずに解く想定です。</li><li>制限時間は60分です。</li></ol></div></div><div><div class="org">非公式・学習用オリジナル模試</div><div class="candidate">受験番号</div></div></article>`}
+function arrayTable(headers,rows){return `<table class="array-grid"><tr>${headers.map(x=>`<th>${esc(x)}</th>`).join('')}</tr>${rows.map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</table>`}
+function fieldLayout(fields){return `<div class="data-layout">${fields.map(x=>`<div>${esc(x)}</div>`).join('')}</div>`}
+function outputBox(text){return `<div class="output-box">${esc(text)}</div>`}
+
+const TERM_POOL=[
+ {t:'スループット',d:'単位時間当たりに処理できる仕事量を表す。',cat:'システム'},
+ {t:'ターンアラウンドタイム',d:'処理を依頼してから、結果をすべて受け取るまでの時間。',cat:'システム'},
+ {t:'レスポンスタイム',d:'処理を要求してから、最初の応答が返るまでの時間。',cat:'システム'},
+ {t:'フェールセーフ',d:'故障や誤操作が起きても、安全側の状態になるよう設計する考え方。',cat:'信頼性'},
+ {t:'フォールトトレラント',d:'一部に故障が発生しても、機能を維持して処理を続ける考え方。',cat:'信頼性'},
+ {t:'フールプルーフ',d:'利用者が誤った操作をしても危険な結果になりにくくする設計。',cat:'信頼性'},
+ {t:'MTBF',d:'故障してから次に故障するまでではなく、故障間の平均稼働時間を示す指標。',cat:'信頼性'},
+ {t:'MTTR',d:'故障が発生してから修復して利用可能になるまでの平均時間。',cat:'信頼性'},
+ {t:'スタック',d:'最後に格納したデータを最初に取り出すLIFOのデータ構造。',cat:'データ構造'},
+ {t:'キュー',d:'最初に格納したデータを最初に取り出すFIFOのデータ構造。',cat:'データ構造'},
+ {t:'ハッシュ法',d:'キーに演算を行い、格納位置を求めて高速に探索する方法。',cat:'データ構造'},
+ {t:'二分探索法',d:'昇順または降順に整列済みのデータの探索範囲を半分ずつ狭める方法。',cat:'アルゴリズム'},
+ {t:'選択法',d:'未整列部分から最小値や最大値を選択し、所定位置へ移す整列法。',cat:'アルゴリズム'},
+ {t:'交換法',d:'隣接する要素などを比較し、大小関係が逆なら交換を繰り返す整列法。',cat:'アルゴリズム'},
+ {t:'挿入法',d:'整列済み部分の適切な位置へ未整列要素を挿入していく整列法。',cat:'アルゴリズム'},
+ {t:'トップダウンテスト',d:'上位モジュールから結合していき、未完成の下位モジュールを代用品で補うテスト。',cat:'テスト'},
+ {t:'ボトムアップテスト',d:'下位モジュールから結合していき、上位モジュールの呼出しを代用品で補うテスト。',cat:'テスト'},
+ {t:'スタブ',d:'トップダウンテストで、未完成の下位モジュールの代わりに使うもの。',cat:'テスト'},
+ {t:'ドライバ',d:'ボトムアップテストで、未完成の上位モジュールの代わりに呼出しを行うもの。',cat:'テスト'},
+ {t:'カプセル化',d:'データとその操作を一体化し、内部実装を外部から隠す考え方。',cat:'OOP'},
+ {t:'継承',d:'既存クラスの性質を受け継いで新しいクラスを定義する仕組み。',cat:'OOP'},
+ {t:'ポリモーフィズム',d:'同じ操作でも対象に応じて異なる動作をさせる性質。',cat:'OOP'},
+ {t:'オーバーフロー',d:'演算結果の絶対値が、表現可能な範囲を超えることで生じる。',cat:'数値'},
+ {t:'桁落ち',d:'ほぼ等しい数値同士の減算で有効数字が大きく失われる現象。',cat:'数値'},
+ {t:'丸め誤差',d:'有限桁で表現するために四捨五入や切捨てを行うことで生じる誤差。',cat:'数値'},
+ {t:'情報落ち',d:'絶対値が大きく異なる浮動小数点数の加減算で小さい側の有効数字が失われる現象。',cat:'数値'},
+ {t:'プロトコル',d:'ネットワーク上で通信するときの手順や形式などの取り決め。',cat:'ネットワーク'},
+ {t:'ルータ',d:'異なるネットワーク間で、宛先に応じてパケットを中継する機器。',cat:'ネットワーク'},
+ {t:'DNS',d:'ドメイン名とIPアドレスを対応付ける仕組み。',cat:'ネットワーク'},
+ {t:'公開鍵暗号方式',d:'暗号化と復号で異なる鍵を使い、一方の鍵を公開できる暗号方式。',cat:'セキュリティ'},
+ {t:'ディジタル署名',d:'公開鍵暗号の仕組みなどを利用して、改ざん検出や送信者確認を行う。',cat:'セキュリティ'},
+ {t:'排他制御',d:'複数の処理が同じ共有資源を同時更新して矛盾することを防ぐ制御。',cat:'OS'},
+ {t:'デッドロック',d:'複数の処理が互いに必要な資源の解放を待ち続け、進行できなくなる状態。',cat:'OS'},
+ {t:'仮想記憶',d:'補助記憶装置の一部を利用し、主記憶より大きいアドレス空間を扱う方式。',cat:'OS'},
+ {t:'正規化',d:'データベースで重複や更新時の不整合を減らすため、表を適切に分割すること。',cat:'DB'},
+ {t:'主キー',d:'表の各行を一意に識別するための属性または属性の組。',cat:'DB'}
+];
+function buildQ1Q2(seed){
+  const selected=shuffle(TERM_POOL,seed*17+3).slice(0,12);
+  const q1Targets=shuffle(selected,seed*29+5).slice(0,5);
+  const q1Items=q1Targets.map((x,i)=>item(1,i+1,KANA[selected.indexOf(x)],`${x.t}：${x.d}`,x.cat,{page:1,choices:KANA.slice(0,12)}));
+  const q1=`<div class="qblock"><div class="qtitle"><span class="num">【1】</span>次の説明文に最も適した答えを解答群から選び、記号で答えなさい。</div><div class="definition-list">${q1Targets.map((x,i)=>`<div class="definition"><b>${i+1}</b><div>${esc(x.d)}</div></div>`).join('')}</div><div class="term-list">${selected.map((x,i)=>`<div>${KANA[i]}．${esc(x.t)}</div>`).join('')}</div></div>`;
+
+  const base=shuffle(TERM_POOL.filter(x=>!q1Targets.includes(x)),seed*19+9).slice(0,10);
+  const a=base.slice(0,5), b=shuffle(base.map(x=>({target:x,txt:x.d})),seed*23+1);
+  const q2Items=a.map((x,i)=>item(2,i+1,KANA[b.findIndex(y=>y.target===x)],`${x.t} は「${x.d}」に対応する。`,x.cat,{page:1,choices:KANA.slice(0,10)}));
+  const q2=`<div class="qblock"><div class="qtitle"><span class="num">【2】</span>次のA群の語句に最も関係の深い説明文をB群から選び、記号で答えなさい。</div><div class="ab-grid"><div class="ab-box"><h4>＜A群＞</h4><ol>${a.map(x=>`<li>${esc(x.t)}</li>`).join('')}</ol></div><div class="ab-box"><h4>＜B群＞</h4><div class="bgroup">${b.map((x,i)=>`<div><b>${KANA[i]}．</b><span>${esc(x.txt)}</span></div>`).join('')}</div></div></div></div>`;
+  return {html:q1+q2,items:[...q1Items,...q2Items]};
+}
+function bin8(n){return (n&255).toString(2).padStart(8,'0')}
+function q3Templates(seed){
+ const k=seed%10,n=seed+2;
+ const cases=[];
+ cases.push({stem:`10進数 ${37+n} を8ビットの2進数で表したものはどれか。`,choices:[bin8(37+n),bin8(38+n),bin8(36+n)],ans:0,exp:`${37+n} を2進数へ変換すると ${bin8(37+n)}。`,topic:'数値表現'});
+ const v=0b10110110; cases.push({stem:`8ビットの値 ${bin8(v)} を論理右シフトで2ビット移動した結果はどれか。`,choices:[bin8(v>>2),bin8((v<<2)&255),bin8(v>>1)],ans:0,exp:`論理右シフトでは左を0で埋めるので ${bin8(v>>2)}。`,topic:'シフト'});
+ cases.push({stem:'クラスから生成した具体的な実体を表す用語はどれか。',choices:['インスタンス','メソッド','スーパークラス'],ans:0,exp:'クラスを設計図としたとき、そこから生成された実体がインスタンス。',topic:'OOP'});
+ cases.push({stem:'トップダウンテストで、未完成の下位モジュールの代わりに使うものはどれか。',choices:['スタブ','ドライバ','デバッガ'],ans:0,exp:'トップダウンでは下位モジュールの代用品としてスタブを使う。',topic:'テスト'});
+ cases.push({stem:'整列済みデータに対し、探索範囲を半分ずつ狭める探索法はどれか。',choices:['二分探索法','線形探索法','ハッシュ法'],ans:0,exp:'中央値との比較によって探索範囲を半分にするのが二分探索法。',topic:'探索'});
+ cases.push({stem:'同じ資源を複数処理が同時に更新しないようにする制御はどれか。',choices:['排他制御','再配置','スプーリング'],ans:0,exp:'共有資源への同時アクセスによる矛盾を防ぐのが排他制御。',topic:'OS'});
+ cases.push({stem:'ほぼ等しい二つの浮動小数点数を減算し、有効数字が失われる現象はどれか。',choices:['桁落ち','情報落ち','オーバーフロー'],ans:0,exp:'近い数同士の減算で有効数字が急減するのが桁落ち。',topic:'数値表現'});
+ cases.push({stem:'異なるネットワーク間で、宛先に応じてパケットを中継する機器はどれか。',choices:['ルータ','リピータ','ハブ'],ans:0,exp:'IPアドレスなどに基づいてネットワーク間を中継するのがルータ。',topic:'ネットワーク'});
+ cases.push({stem:'未整列部分から最小値を一つ選び、先頭側の所定位置へ移す整列法はどれか。',choices:['選択法','交換法','挿入法'],ans:0,exp:'未整列部分の最小（最大）要素を選ぶ手順が選択法。',topic:'整列'});
+ cases.push({stem:'表の一つの行を一意に識別するために設定する属性はどれか。',choices:['主キー','外部キー','インデックス'],ans:0,exp:'各行を一意に識別する属性が主キー。',topic:'DB'});
+ return cases[(k+seed)%cases.length];
+}
+function buildQ3(seed){
+  const chosen=[]; for(let i=0;i<4;i++) chosen.push(q3Templates(seed*5+i*3));
+  const items=[]; let html=`<div class="qblock"><div class="qtitle"><span class="num">【3】</span>次の問いに答えなさい。</div><div class="instruction">1～4については、各問のア～ウから最も適するものを一つ選び、5は数値を答えなさい。</div>`;
+  chosen.forEach((q,i)=>{
+    const pairs=q.choices.map((x,j)=>({x,j})); const mix=shuffle(pairs,seed*31+i); const ans=KANA[mix.findIndex(p=>p.j===q.ans)];
+    html+=`<div class="mcq"><div class="stem"><b>${i+1}</b>　${esc(q.stem)}</div><div class="choices">${mix.map((p,j)=>`<div class="choice">${KANA[j]}．${esc(p.x)}</div>`).join('')}</div></div>`;
+    items.push(item(3,i+1,ans,q.exp,q.topic,{page:2,choices:KANA.slice(0,3)}));
+  });
+  const mtbf=80+seed*10,mttr=4+(seed%3), availability=mtbf/(mtbf+mttr); const pct=Math.floor(availability*1000)/10;
+  html+=`<div class="mcq"><div class="stem"><b>5</b>　MTBFが ${mtbf} 時間、MTTRが ${mttr} 時間であるシステムの稼働率を百分率で求め、小数第2位を切り捨てて小数第1位まで答えなさい。</div></div></div>`;
+  items.push(item(3,5,String(pct),`稼働率＝MTBF÷(MTBF＋MTTR)＝${mtbf}÷${mtbf+mttr}。百分率では ${pct}%（指定どおり小数第1位まで）。`,'信頼性',{page:2,kind:'number',choices:[]}));
+  return {html,items};
+}
+
+function algoInsertion(seed,startNo=1){
+ const vals=[31+seed,47+seed,28+seed,54+seed,36+seed];
+ const opts=[
+  {id:'FOR',text:'g = 2 To n'},{id:'COND',text:'D(j) > D(0)'},{id:'PUT',text:'D(j + 1) = D(0)'},
+  {id:'BADFOR',text:'g = 1 To n - 1'},{id:'BADCOND',text:'D(j) < D(0)'},{id:'BADPUT',text:'D(j) = D(0)'}];
+ const bank=choiceBank(opts,seed*101+7),n1=startNo,n2=startNo+1,n3=startNo+2;
+ const code=`Sub Program${startNo===1?'1':'2'}(D() As Long, n As Long)\n    Dim g As Long\n    Dim j As Long\n    For ${blank(n1)}\n        D(0) = D(g)\n        For j = g - 1 To 1 Step -1\n            If ${blank(n2)} Then\n                D(j + 1) = D(j)\n            Else\n                Exit For\n            End If\n        Next j\n        ${blank(n3)}\n    Next g\n    For g = 1 To n\n        MsgBox (D(g))\n    Next g\nEnd Sub`;
+ const html=`<div class="qtitle"><span class="num">【4】</span>次の各問いに答えなさい。</div><div class="subhead">問${startNo===1?'1':'2'}．プログラムの説明を読んで、プログラムの${blank(n1)}～${blank(n3)}にあてはまる答えを解答群から選び、記号で答えなさい。</div><div class="instruction">＜プログラムの説明＞</div><div class="subhead">処理内容</div><div class="compact">引数で渡された配列 D の数値を挿入法で昇順に並べ替え、ディスプレイに表示する。</div><div class="subhead">処理条件</div><ol class="spec-list"><li>配列 D のデータ件数は n に記憶され、データは添字1～nに格納されている。</li><li>D(0) は並べ替え時の作業領域として利用する。</li><li>並べ替え後、D(1)～D(n) を順に表示する。</li></ol>${arrayTable(['添字','0','1','2','…','n'],[['D','',...vals.slice(0,2),'…',vals[4]]])}<div class="instruction">＜プログラム＞</div><div class="program">${code}</div>${bank.html}`;
+ return {html,count:3,title:'挿入法',items:[
+  item(4,n1,bank.map.FOR,'挿入法では2番目の要素から順に、左側の整列済み部分へ挿入していくため g=2 To n。','挿入法',{choices:KANA.slice(0,opts.length)}),
+  item(4,n2,bank.map.COND,'昇順では、左側の D(j) が退避値 D(0) より大きい間、D(j) を右へずらす。','挿入法',{choices:KANA.slice(0,opts.length)}),
+  item(4,n3,bank.map.PUT,'ずらし終えた空き位置 j+1 に退避値 D(0) を格納する。','挿入法',{choices:KANA.slice(0,opts.length)})]};
+}
+function algoSelection(seed,startNo=1){
+ const vals=['kiwi','apple','pear','melon','grape'];
+ const opts=[
+  {id:'RANGE',text:'s = m + 1 To n'},{id:'POS',text:'r = s'},{id:'DIFF',text:'r <> m'},
+  {id:'BADRANGE',text:'s = 1 To m - 1'},{id:'BADPOS',text:'r = m'},{id:'BADIFF',text:'r = m'}];
+ const bank=choiceBank(opts,seed*103+11),n1=startNo,n2=startNo+1,n3=startNo+2;
+ const code=`Sub Program${startNo===1?'1':'2'}(Dat() As String, n As Long)\n    Dim m As Long\n    Dim r As Long\n    Dim s As Long\n    Dim t As Long\n    For m = 1 To n - 1\n        r = m\n        For ${blank(n1)}\n            If Dat(s) < Dat(r) Then\n                ${blank(n2)}\n            End If\n        Next s\n        If ${blank(n3)} Then\n            Dat(0) = Dat(m)\n            Dat(m) = Dat(r)\n            Dat(r) = Dat(0)\n        End If\n    Next m\n    For t = 1 To n\n        MsgBox (Dat(t))\n    Next t\nEnd Sub`;
+ const html=`<div class="qtitle"><span class="num">【4】</span>次の各問いに答えなさい。</div><div class="subhead">問${startNo===1?'1':'2'}．プログラムの説明を読んで、プログラムの${blank(n1)}～${blank(n3)}にあてはまる答えを解答群から選び、記号で答えなさい。</div><div class="instruction">＜プログラムの説明＞</div><div class="subhead">処理内容</div><div class="compact">引数で渡された文字列配列 Dat を選択法で昇順に並べ替えて表示する。</div><div class="subhead">処理条件</div><ol class="spec-list"><li>データ件数は n、データは Dat(1)～Dat(n) に記憶されている。</li><li>Dat(0) は交換時の作業領域として利用する。</li><li>未整列部分から辞書順で最小の文字列を探す。</li></ol>${arrayTable(['添字','0','1','2','…','n'],[['Dat','',vals[0],vals[1],'…',vals[4]]])}<div class="instruction">＜プログラム＞</div><div class="program">${code}</div>${bank.html}`;
+ return {html,count:3,title:'選択法',items:[
+  item(4,n1,bank.map.RANGE,'未整列部分 m+1～n を走査して最小位置を探す。','選択法',{choices:KANA.slice(0,opts.length)}),
+  item(4,n2,bank.map.POS,'より小さい Dat(s) を見つけたら、その位置 s を r に記憶する。','選択法',{choices:KANA.slice(0,opts.length)}),
+  item(4,n3,bank.map.DIFF,'最小位置 r が m と異なる場合だけ交換すればよい。','選択法',{choices:KANA.slice(0,opts.length)})]};
+}
+function algoBubble(seed,startNo=1){
+ const opts=[
+  {id:'COND',text:'D(j) > D(j + 1)'},{id:'PUT',text:'D(j + 1) = D(0)'},
+  {id:'BADCOND',text:'D(j) < D(j + 1)'},{id:'BADPUT',text:'D(j) = D(0)'},{id:'LOOP',text:'j = 1 To n - i'}];
+ const bank=choiceBank(opts,seed*107+13),n1=startNo,n2=startNo+1;
+ const code=`Sub Program${startNo===1?'1':'2'}(D() As Long, n As Long)\n    Dim i As Long\n    Dim j As Long\n    For i = 1 To n - 1\n        For j = 1 To n - i\n            If ${blank(n1)} Then\n                D(0) = D(j)\n                D(j) = D(j + 1)\n                ${blank(n2)}\n            End If\n        Next j\n    Next i\n    For i = 1 To n\n        MsgBox (D(i))\n    Next i\nEnd Sub`;
+ const html=`<div class="qtitle"><span class="num">【4】</span>次の各問いに答えなさい。</div><div class="subhead">問${startNo===1?'1':'2'}．次のプログラムは、数値配列 D を交換法で昇順に並べ替えるものである。</div><div class="subhead">処理条件</div><ol class="spec-list"><li>D(1)～D(n) にデータがあり、D(0) を作業領域とする。</li><li>隣接要素の大小関係が逆なら交換する。</li></ol><div class="instruction">＜プログラム＞</div><div class="program">${code}</div>${bank.html}`;
+ return {html,count:2,title:'交換法',items:[
+  item(4,n1,bank.map.COND,'昇順なので左要素が右要素より大きい場合に交換する。','交換法',{choices:KANA.slice(0,opts.length)}),
+  item(4,n2,bank.map.PUT,'D(j) を0番地へ退避済みなので、交換の最後は D(j+1)=D(0)。','交換法',{choices:KANA.slice(0,opts.length)})]};
+}
+function algoRank(seed,startNo=1){
+ const opts=[
+  {id:'CMP',text:'Score(i) < Score(k)'},{id:'UP',text:'Jun(i) = Jun(i) + 1'},
+  {id:'BADCMP',text:'Score(i) <= Score(k)'},{id:'BADUP',text:'Jun(k) = Jun(k) + 1'},{id:'EQ',text:'Score(i) = Score(k)'}];
+ const bank=choiceBank(opts,seed*109+17),n1=startNo,n2=startNo+1;
+ const code=`Sub Program${startNo===1?'1':'2'}(Score() As Long, Jun() As Long, n As Long)\n    Dim g As Long\n    Dim i As Long\n    Dim k As Long\n    For g = 1 To n\n        Jun(g) = 1\n    Next g\n    For i = 1 To n - 1\n        For k = i + 1 To n\n            If ${blank(n1)} Then\n                ${blank(n2)}\n            ElseIf Score(i) > Score(k) Then\n                Jun(k) = Jun(k) + 1\n            End If\n        Next k\n    Next i\n    For g = 1 To n\n        MsgBox (Score(g) & " " & Jun(g) & "位")\n    Next g\nEnd Sub`;
+ const html=`<div class="qtitle"><span class="num">【4】</span>次の各問いに答えなさい。</div><div class="subhead">問${startNo===1?'1':'2'}．次のプログラムは、配列 Score の値を大きい順に順位付けするものである。</div><div class="subhead">処理条件</div><ol class="spec-list"><li>Score(1)～Score(n) に得点が記憶されている。</li><li>Jun の全要素を1で初期化し、自分より大きい得点一つにつき順位を1増やす。</li><li>同点は同順位とする。</li></ol><div class="program">${code}</div>${bank.html}`;
+ return {html,count:2,title:'順位付け',items:[
+  item(4,n1,bank.map.CMP,'Score(i) より大きい得点が存在するときだけ Jun(i) を増やすので Score(i)<Score(k)。','順位付け',{choices:KANA.slice(0,opts.length)}),
+  item(4,n2,bank.map.UP,'順位を求めている対象は i なので Jun(i) を1増やす。','順位付け',{choices:KANA.slice(0,opts.length)})]};
+}
+function algoBinary(seed,startNo=1,recursive=false){
+ const n1=startNo,n2=startNo+1,n3=startNo+2;
+ if(recursive){
+  const opts=[
+   {id:'EMPTY',text:'left > right'},{id:'LEFT',text:'Search(D(), key, left, mid - 1)'},{id:'RIGHT',text:'Search(D(), key, mid + 1, right)'},
+   {id:'BAD1',text:'left < right'},{id:'BAD2',text:'Search(D(), key, left, mid + 1)'},{id:'BAD3',text:'Search(D(), key, mid - 1, right)'}];
+  const bank=choiceBank(opts,seed*113+19);
+  const code=`Function Search(D() As Long, key As Long, left As Long, right As Long) As Long\n    Dim mid As Long\n    If ${blank(n1)} Then\n        Search = -1\n    Else\n        mid = (left + right) \\ 2\n        If D(mid) = key Then\n            Search = mid\n        ElseIf key < D(mid) Then\n            Search = ${blank(n2)}\n        Else\n            Search = ${blank(n3)}\n        End If\n    End If\nEnd Function`;
+  const html=`<div class="qtitle"><span class="num">【4】</span>次の各問いに答えなさい。</div><div class="subhead">問${startNo===1?'1':'2'}．昇順の配列 D を再帰処理によって二分探索する関数である。</div><div class="subhead">処理条件</div><ol class="spec-list"><li>見つかった場合は添字を、見つからない場合は -1 を返す。</li><li>「\\」は整数除算を表す。</li></ol>${arrayTable(['添字','1','2','3','4','5','6','7'],[['D',12,21,35,48,57,73,86]])}<div class="program">${code}</div>${bank.html}`;
+  return {html,count:3,title:'再帰二分探索',items:[
+   item(4,n1,bank.map.EMPTY,'left>right なら探索範囲が空なので -1 を返す。','二分探索',{choices:KANA.slice(0,opts.length)}),
+   item(4,n2,bank.map.LEFT,'key が中央値より小さいので左半分 left～mid-1 を再帰探索する。','二分探索',{choices:KANA.slice(0,opts.length)}),
+   item(4,n3,bank.map.RIGHT,'key が中央値より大きいので右半分 mid+1～right を再帰探索する。','二分探索',{choices:KANA.slice(0,opts.length)})]};
+ }
+ const opts=[
+  {id:'LOOP',text:'low <= high And pos = -1'},{id:'LEFT',text:'high = mid - 1'},
+  {id:'BADLOOP',text:'low > high And pos = -1'},{id:'BADLEFT',text:'high = mid + 1'},{id:'RIGHT',text:'low = mid + 1'}];
+ const bank=choiceBank(opts,seed*127+23);
+ const code=`Sub Program${startNo===1?'1':'2'}(D() As Long, n As Long, key As Long)\n    Dim low As Long\n    Dim high As Long\n    Dim mid As Long\n    Dim pos As Long\n    low = 1\n    high = n\n    pos = -1\n    Do While ${blank(n1)}\n        mid = (low + high) \\ 2\n        If D(mid) = key Then\n            pos = mid\n        ElseIf D(mid) < key Then\n            low = mid + 1\n        Else\n            ${blank(n2)}\n        End If\n    Loop\n    MsgBox (pos)\nEnd Sub`;
+ const html=`<div class="qtitle"><span class="num">【4】</span>次の各問いに答えなさい。</div><div class="subhead">問${startNo===1?'1':'2'}．昇順に整列済みの配列 D から key を二分探索するプログラムである。</div><div class="subhead">処理条件</div><ol class="spec-list"><li>見つかった添字を pos に記憶し、存在しないときは -1 を表示する。</li><li>「\\」は整数除算を表す。</li></ol>${arrayTable(['添字','1','2','3','4','5','6','7','8'],[['D',9,17,28,34,46,55,72,90]])}<div class="program">${code}</div>${bank.html}`;
+ return {html,count:2,title:'二分探索',items:[
+  item(4,n1,bank.map.LOOP,'探索範囲が残り、まだ見つかっていない間だけ反復する。','二分探索',{choices:KANA.slice(0,opts.length)}),
+  item(4,n2,bank.map.LEFT,'D(mid)>key の場合は右端を mid-1 にする。','二分探索',{choices:KANA.slice(0,opts.length)})]};
+}
+function buildQ4(seed){
+ const combos=[['ins','bubble'],['sel','rank'],['ins','bin'],['sel','bubble'],['sel','rank'],['ins','rank'],['sel','bin'],['ins','bubble'],['sel','rank'],['ins','bin']];
+ const [a,b]=combos[(seed-1)%combos.length];
+ const fn=(name,s,no)=>({ins:algoInsertion,sel:algoSelection,bubble:algoBubble,rank:algoRank,bin:(x,y)=>algoBinary(x,y,false)})[name](s,no);
+ const p1=fn(a,seed,1), p2=fn(b,seed+21,p1.count+1);
+ if(p1.count+p2.count!==5) throw new Error('Q4 blank count must be 5');
+ p1.items.forEach(x=>x.page=3); p2.items.forEach(x=>x.page=4);
+ return {p1,p2,items:[...p1.items,...p2.items]};
+}
+</script>
+<script>'use strict';
+function fnode(type,text){return `<div class="flow-node ${type}"><span>${text}</span></div>`}
+function fdecision(text,left,right){return `<div class="decision-wrap"><div class="decision"><span>${text}</span></div><div class="decision-labels"><span>YES</span><span>NO</span></div><div class="branch-grid"><div class="branch-box">${left}</div><div class="branch-box">${right}</div></div><div class="branch-join"></div></div>`}
+function flowPage(title,left,right,caption=''){return `<div class="flow-title">${esc(title)}</div><div class="flow-area"><div class="flow-col">${left}</div><div class="flow-col">${right}</div></div>${caption?`<div class="flow-caption">${esc(caption)}</div>`:''}`}
+
+const SCENARIOS=[
+ {q5:{title:'学校図書館の日別貸出集計',entity:'貸出',key:'日付',group:'学年',cat:'分類',qty:'冊数',master:'分類'},q6:{title:'自動販売機の時間帯別売上集計',entity:'販売',key:'日付',group:'時間帯',cat:'商品',qty:'本数',master:'商品'},q7:{title:'移動図書サービスの年間利用分析',entity:'貸出',key:'拠点',group:'拠点',cat:'ジャンル',qty:'冊数',master:'ジャンル'}},
+ {q5:{title:'スポーツ大会の会場別参加集計',entity:'受付',key:'開催日',group:'会場',cat:'種目',qty:'人数',master:'種目'},q6:{title:'鉄道路線の駅別乗降集計',entity:'乗車',key:'駅',group:'駅区分',cat:'券種',qty:'人数',master:'券種'},q7:{title:'学生食堂の学期別販売分析',entity:'販売',key:'学期',group:'学年',cat:'メニュー',qty:'食数',master:'メニュー'}},
+ {q5:{title:'路線バスの便別乗客集計',entity:'乗車',key:'運行日',group:'路線',cat:'乗車区分',qty:'人数',master:'区分'},q6:{title:'カフェの時間帯別注文集計',entity:'注文',key:'営業日',group:'時間帯',cat:'商品分類',qty:'個数',master:'商品'},q7:{title:'バスケットボール選手の試合分析',entity:'記録',key:'試合',group:'所属',cat:'選手',qty:'得点',master:'選手'}},
+ {q5:{title:'購買部の日別商品売上集計',entity:'販売',key:'日付',group:'商品群',cat:'商品',qty:'個数',master:'商品'},q6:{title:'カート大会の周回記録集計',entity:'走行',key:'選手',group:'クラス',cat:'周回',qty:'秒',master:'選手'},q7:{title:'レンタル商品の店舗・ジャンル別貸出分析',entity:'貸出',key:'店舗',group:'店舗',cat:'ジャンル',qty:'回数',master:'作品'}},
+ {q5:{title:'食堂のクラス別食券集計',entity:'購入',key:'日付',group:'学年',cat:'食券種別',qty:'枚数',master:'食券'},q6:{title:'書店の分類別販売上位集計',entity:'販売',key:'日付',group:'分類',cat:'書籍',qty:'冊数',master:'書籍'},q7:{title:'販売目標の期間・商品群別達成分析',entity:'実績',key:'期間',group:'商品群',cat:'達成区分',qty:'件数',master:'商品群'}},
+ {q5:{title:'ホテルの支店別アンケート集計',entity:'回答',key:'宿泊日',group:'支店',cat:'評価項目',qty:'点数',master:'項目'},q6:{title:'クイズ大会の設問別正答率集計',entity:'解答',key:'学校',group:'学校',cat:'設問',qty:'正誤',master:'設問'},q7:{title:'ECサイトの地域・分類別受注分析',entity:'受注',key:'地域',group:'地域',cat:'商品分類',qty:'数量',master:'商品'}},
+ {q5:{title:'診療所の時間帯別受付集計',entity:'受付',key:'診療日',group:'診療科',cat:'時間帯',qty:'人数',master:'診療科'},q6:{title:'給油所の時間帯・油種別集計',entity:'給油',key:'営業日',group:'時間帯',cat:'油種',qty:'数量',master:'油種'},q7:{title:'購買部の週別商品販売分析',entity:'販売',key:'日付',group:'商品区分',cat:'商品',qty:'個数',master:'商品'}},
+ {q5:{title:'博物館の日別券種集計',entity:'入館',key:'日付',group:'曜日',cat:'券種',qty:'人数',master:'券種'},q6:{title:'映画館の上映回・席種別集計',entity:'販売',key:'上映日',group:'上映回',cat:'席種',qty:'枚数',master:'席種'},q7:{title:'バスケットボール選手の大会成績分析',entity:'記録',key:'試合',group:'所属',cat:'選手',qty:'得点',master:'選手'}},
+ {q5:{title:'部活動大会のチーム別得点集計',entity:'試合',key:'開催日',group:'チーム',cat:'ラウンド',qty:'得点',master:'チーム'},q6:{title:'パン店の曜日別商品販売順位',entity:'販売',key:'営業日',group:'曜日',cat:'商品',qty:'個数',master:'商品'},q7:{title:'レンタル映像の店舗・ジャンル別貸出分析',entity:'貸出',key:'店舗',group:'店舗',cat:'ジャンル',qty:'回数',master:'作品'}},
+ {q5:{title:'配送センターの日別荷物集計',entity:'受付',key:'受付日',group:'サイズ',cat:'地域',qty:'個数',master:'地域'},q6:{title:'企業説明会の時間帯別参加集計',entity:'受付',key:'開催日',group:'時間帯',cat:'企業',qty:'人数',master:'企業'},q7:{title:'資格講座の期間・コース別達成率分析',entity:'実績',key:'期間',group:'コース',cat:'達成区分',qty:'件数',master:'コース'}}
+];
+
+function section5(seed,cfg){
+ const mode=(seed-1)%2;
+ if(mode===0){
+  const opts=[
+   {id:'SEARCH',text:'Mcode(i) <> Code'},{id:'ADD1',text:'Tbl(1, i) + Q1 → Tbl(1, i)'},{id:'COLTOTAL',text:'Tbl(0, j) = Tbl(1, j) + Tbl(2, j)'},
+   {id:'SORT',text:'Tbl(0, k) < Tbl(0, k + 1)'},{id:'RATE',text:'Tbl(1, j) × 100 ÷ Tbl(2, j) → Rate'},
+   {id:'BADSEARCH',text:'Mcode(i) = Code'},{id:'BADSORT',text:'Tbl(0, k) > Tbl(0, k + 1)'},{id:'BADRATE',text:'Tbl(2, j) × 100 ÷ Tbl(1, j) → Rate'},
+   {id:'LOOPALL',text:'m は 0 から 1 ずつ増やして m ≦ 2 の間'},{id:'OUTPUT',text:'"合計", Tbl(0, 0), Tbl(1, 0), Tbl(2, 0) を表示'}
+  ];
+  const bank=choiceBank(opts,seed*211+3),A=bank.map;
+  const items=[
+   item(5,1,A.SEARCH,'マスタコードが入力コードと一致するまで添字 i を進めるので、反復条件は Mcode(i)<>Code。','マスタ探索',{page:6,choices:KANA.slice(0,opts.length)}),
+   item(5,2,A.ADD1,'見つかったマスタ位置 i を列添字として、1行目の区分1集計へ数量 Q1 を加算する。','多次元配列',{page:6,choices:KANA.slice(0,opts.length)}),
+   item(5,3,A.COLTOTAL,'0行目を列合計として使うため、各列の区分1と区分2を加えた値を Tbl(0,j) に記憶する。','多次元配列',{page:6,choices:KANA.slice(0,opts.length)}),
+   item(5,4,A.SORT,'合計値の降順なので、左の合計が右より小さいときに交換する。','交換法',{page:6,choices:KANA.slice(0,opts.length)}),
+   item(5,5,A.RATE,'比率は区分1合計÷区分2合計×100で求める。','集計',{page:6,choices:KANA.slice(0,opts.length)})
+  ];
+  const desc=`<div class="qtitle"><span class="num">【5】</span>流れ図の説明を読んで、流れ図の⑴～⑸にあてはまる答えを解答群から選び、記号で答えなさい。</div>
+  <div class="instruction">＜流れ図の説明＞</div><div class="subhead">処理内容</div><div class="compact">${esc(cfg.title)}の1年分の${esc(cfg.entity)}データを読み、${esc(cfg.master)}別の年間集計一覧を表示する。</div>
+  <div class="subhead">入力データ</div>${fieldLayout([`${cfg.master}コード (Code)`,`期間 (Mon)`,`区分1数量 (Q1)`,`区分2数量 (Q2)`])}
+  <div class="subhead">実行結果（例）</div>${outputBox(`(${cfg.title} 一覧)\n${cfg.master}名      合計    区分1    区分2    備考\nA              2530     1240     1290\nB              1718      940      778   *\n…\n合計           8421     4512     3909`)}
+  <div class="subhead">処理条件</div><ol class="spec-list"><li>配列 Mcode と Mname の添字は対応し、${cfg.master}コードを1～${12+seed%6}番地へ記憶する。</li><li>2次元配列 Tbl の1行目に区分1、2行目に区分2を集計し、0行目を列合計、0列目を行合計に利用する。</li><li>入力終了後、各${cfg.master}の合計を求め、Mname と Tbl の各列を合計の降順に並べ替える。</li><li>区分1÷区分2×100が150を超える場合、備考に「*」を表示する。</li><li>最後に全体合計を表示する。データにエラーはない。</li></ol>${arrayTable(['添字','0','1','2','…','h'],[['Mcode','',101,108,'…',199],['Mname','',`${cfg.master}A`,`${cfg.master}B`,'…',`${cfg.master}Z`]])}${bank.html}`;
+  let left=fnode('term','はじめ')+fnode('process','配列 Mcode, Mname にデータを記憶する')+fnode('process','配列 Tbl を初期化する')+fnode('io','データを読む')+fnode('loop','ループ1　データがある間')+fnode('process','1 → i')+fnode('loop',`ループ2　${blank(1)} の間`)+fnode('process','i + 1 → i')+fnode('loop','ループ2')+fnode('process',blank(2))+fnode('process','Tbl(2, i) + Q2 → Tbl(2, i)')+fnode('process','Tbl(1, 0) + Q1 → Tbl(1, 0)')+fnode('process','Tbl(2, 0) + Q2 → Tbl(2, 0)')+fnode('io','次のデータを読む')+fnode('loop','ループ1')+fnode('connector','A');
+  let right=fnode('connector','A')+fnode('loop','ループ3　j=1～h')+fnode('process',blank(3))+fnode('loop','ループ3')+fnode('process','Tbl(0, 0) = Tbl(1, 0) + Tbl(2, 0)')+fnode('loop','ループ4　外側 j=1～h-1')+fnode('loop','ループ5　内側 k=1～h-j')+fdecision(blank(4),'Mname(k) と Mname(k+1) を交換<br>Tbl(0～2,k) と Tbl(0～2,k+1) を交換','交換しない')+fnode('loop','ループ5')+fnode('loop','ループ4')+fnode('loop','ループ6　j=1～h')+fnode('process',blank(5))+fdecision('Rate > 150','"*" → Mark','"" → Mark')+fnode('io','Mname(j), Tbl(0～2,j), Mark を表示')+fnode('loop','ループ6')+fnode('io','全体合計 Tbl(0～2,0) を表示')+fnode('term','おわり');
+  return {desc,flow:flowPage(`【5】 ${cfg.title}　流れ図`,left,right,'※ 0番地を合計・作業領域として利用する構成。'),items};
+ }
+ const opts=[
+  {id:'BREAK',text:'Day <> PrevDay'},{id:'TIMESEARCH',text:'Time > Border(t)'},{id:'CELL',text:'Daily(company, t) + 1 → Daily(company, t)'},
+  {id:'SUBTOTAL',text:'Comp(company) + 1 → Comp(company)'},{id:'DAYTOTAL',text:'All(0, t) + Daily(company, t) → All(0, t)'},
+  {id:'BADBREAK',text:'Day = PrevDay'},{id:'BADTIME',text:'Time <= Border(t)'},{id:'BADCELL',text:'Daily(t, company) + 1 → Daily(t, company)'},
+  {id:'PREV',text:'Day → PrevDay'},{id:'OUT',text:'日計を表示'}
+ ];
+ const bank=choiceBank(opts,seed*217+7),A=bank.map;
+ const items=[
+  item(5,1,A.BREAK,'日付順の入力なので Day<>PrevDay が日付のコントロールブレイク条件。','コントロールブレイク',{page:6,choices:KANA.slice(0,opts.length)}),
+  item(5,2,A.TIMESEARCH,'境界時刻を越える間、次の時間帯区分を探す。','探索',{page:6,choices:KANA.slice(0,opts.length)}),
+  item(5,3,A.CELL,'企業×時間帯の交点へ参加件数1を加算する。','多次元配列',{page:6,choices:KANA.slice(0,opts.length)}),
+  item(5,4,A.SUBTOTAL,'企業ごとの小計は Comp(company) に1件ずつ加算する。','集計',{page:6,choices:KANA.slice(0,opts.length)}),
+  item(5,5,A.DAYTOTAL,'日計を確定するとき、各企業の日別値を期間全体の集計へ加える。','集計',{page:6,choices:KANA.slice(0,opts.length)})
+ ];
+ const desc=`<div class="qtitle"><span class="num">【5】</span>流れ図の説明を読んで、流れ図の⑴～⑸にあてはまる答えを解答群から選び、記号で答えなさい。</div><div class="instruction">＜流れ図の説明＞</div><div class="subhead">処理内容</div><div class="compact">${esc(cfg.entity)}データを読み、日ごと・${esc(cfg.group)}ごと・時間帯ごとの件数一覧を表示する。</div><div class="subhead">入力データ</div>${fieldLayout(['日付 Day',`${cfg.group}番号 Company`,'受付時刻 Time'])}<div class="subhead">処理条件</div><ol class="spec-list"><li>入力は日付、${cfg.group}番号の順に整列済みである。</li><li>配列 Border に各時間帯の終了時刻を格納し、Time と比較して時間帯添字 t を求める。</li><li>日付が変わるごとに日別一覧を表示し、期間全体の配列 All へ日計を加算する。</li><li>各${cfg.group}の小計も求める。最後の1日も同じ処理で確定する。</li></ol>${arrayTable(['t','1','2','3','4','5'],[['Border','1029','1059','1129','1159','1229']])}${bank.html}`;
+ let left=fnode('term','はじめ')+fnode('process','Daily, All, Comp を初期化')+fnode('io','データを読む')+fnode('process','Day → PrevDay')+fnode('loop','ループ1　データがある間')+fdecision(blank(1),'日別表示処理を行う<br>Daily を All に加算<br>Daily, Comp を初期化<br>Day → PrevDay','そのまま')+fnode('process','1 → t')+fnode('loop',`ループ2　${blank(2)} の間`)+fnode('process','t + 1 → t')+fnode('loop','ループ2')+fnode('process',blank(3))+fnode('process',blank(4))+fnode('io','次のデータを読む')+fnode('loop','ループ1')+fnode('connector','A');
+ let right=fnode('connector','A')+fnode('sub','日別表示処理')+fnode('loop','ループ3　company=1～会社数')+fnode('loop','ループ4　t=1～時間帯数')+fnode('io','Daily(company,t) を表示')+fnode('process',blank(5))+fnode('loop','ループ4')+fnode('io','Comp(company) を表示')+fnode('loop','ループ3')+fnode('io','日計を表示')+fnode('io','期間全体 All を表示')+fnode('term','おわり');
+ return {desc,flow:flowPage(`【5】 ${cfg.title}　流れ図`,left,right,'※ 整列済みデータのコントロールブレイクと区分探索を組み合わせる。'),items};
+}
+
+function section6(seed,cfg){
+ const mode=(seed-1)%2;
+ if(mode===0){
+  const opts=[
+   {id:'GROUP',text:'Code \\ 1000 → g'},{id:'SUB',text:'(Code - g × 1000) \\ 100 → c'},{id:'PERIOD',text:'Month <= 3'},
+   {id:'AGG',text:'Gkei(g, c) + 1 → Gkei(g, c)'},{id:'MAXCOND',text:'Kkei(k, n) > Max'},
+   {id:'BADGROUP',text:'Code Mod 1000 → g'},{id:'BADSUB',text:'Code Mod 100 → c'},{id:'BADPERIOD',text:'Month >= 10'},
+   {id:'BADAGG',text:'Gkei(c, g) + 1 → Gkei(c, g)'},{id:'BADMAX',text:'Kkei(k, n) > Min'}
+  ];
+  const bank=choiceBank(opts,seed*223+5),A=bank.map;
+  const items=[
+   item(6,1,A.GROUP,'複合コードの千位以上を整数除算で取り出して大分類 g とする。','コード分解',{page:8,choices:KANA.slice(0,opts.length)}),
+   item(6,2,A.SUB,'残りの上位1桁を100で整数除算して小分類 c を取り出す。','コード分解',{page:8,choices:KANA.slice(0,opts.length)}),
+   item(6,3,A.PERIOD,'月が1～3なら第1期間として分類する判定になる。','条件分岐',{page:8,choices:KANA.slice(0,opts.length)}),
+   item(6,4,A.AGG,'求めた g,c の交点へ1件を加算する。','多次元配列',{page:8,choices:KANA.slice(0,opts.length)}),
+   item(6,5,A.MAXCOND,'上位抽出では現在の候補 Max より大きい値を探す条件として Kkei(k,n)>Max を用いる。','選択法',{page:8,choices:KANA.slice(0,opts.length)})
+  ];
+  const desc=`<div class="qtitle"><span class="num">【6】</span>流れ図の説明を読んで、流れ図の⑴～⑸にあてはまる答えを解答群から選び、記号で答えなさい。</div><div class="instruction">＜流れ図の説明＞</div><div class="subhead">処理内容</div><div class="compact">${esc(cfg.title)}の記録を読み、期間・${esc(cfg.group)}・${esc(cfg.cat)}別の集計を行い、期間ごとの上位項目と構成比を表示する。</div><div class="subhead">入力データ</div>${fieldLayout(['複合コード Code','月 Month',cfg.qty])}<div class="subhead">処理条件</div><ol class="spec-list"><li>複合コードは「大分類1桁・小分類1桁・個別番号2桁」で構成する。</li><li>月1～3を第1期間、4～6を第2期間、7～9を第3期間、10～12を第4期間とする。</li><li>Gkei は大分類×小分類、Kkei は期間×項目の集計に利用し、末尾行・末尾列には合計を求める。</li><li>各期間について件数の多い項目を上位5件選び、全体に対する構成比とともに表示する。</li></ol>${fieldLayout(['大分類','小分類','個別番号'])}${bank.html}`;
+  let left=fnode('term','はじめ')+fnode('process','Gkei, Kkei を初期化')+fnode('io','データを読む')+fnode('loop','ループ1　データがある間')+fnode('process',blank(1))+fnode('process',blank(2))+fdecision(blank(3),'1 → p',fdecision('Month <= 6','2 → p',fdecision('Month <= 9','3 → p','4 → p')))+fnode('process',blank(4))+fnode('process','Gkei(g, 合計列) + 1 → Gkei(g, 合計列)')+fnode('process','Gkei(合計行, c) + 1 → Gkei(合計行, c)')+fnode('process','Kkei(p, item) + 1 → Kkei(p, item)')+fnode('io','次のデータを読む')+fnode('loop','ループ1')+fnode('connector','A');
+  let right=fnode('connector','A')+fnode('loop','ループ2　p=1～4')+fnode('process','"" → Str')+fnode('loop','ループ3　順位 k=1～5')+fnode('process','-1 → Max')+fnode('loop','ループ4　候補 n=1～項目数')+fdecision(blank(5),'Kkei(p,n) → Max<br>n → Pos','そのまま')+fnode('loop','ループ4')+fnode('process','Kkei(p,Pos) × 100 ÷ Kkei(p,合計) → Rate')+fnode('process','名称と Rate を Str に連結')+fnode('process','選択済み印を付ける')+fnode('loop','ループ3')+fnode('io','期間 p と Str を表示')+fnode('loop','ループ2')+fnode('io','Gkei の集計表を表示')+fnode('term','おわり');
+  return {desc,flow:flowPage(`【6】 ${cfg.title}　流れ図`,left,right,'※ コード分解・期間判定・二次元集計・上位抽出を連続して処理する。'),items};
+ }
+ const opts=[
+  {id:'SEARCH',text:'Cod(i) <> Scode'},{id:'REC',text:'Rec(Day, i) = Time'},{id:'BEST',text:'Rec(g, i) < Rec(0, i)'},
+  {id:'SORT',text:'Rec(0, j) > Rec(0, j + 1)'},{id:'TIE',text:'Cod(j) > Cod(j + 1)'},
+  {id:'BADSEARCH',text:'Cod(i) = Scode'},{id:'BADREC',text:'Rec(i, Day) = Time'},{id:'BADBEST',text:'Rec(g, i) > Rec(0, i)'},
+  {id:'BADSORT',text:'Rec(0, j) < Rec(0, j + 1)'},{id:'BADTIE',text:'Cod(j) < Cod(j + 1)'}
+ ];
+ const bank=choiceBank(opts,seed*229+11),A=bank.map;
+ const items=[
+  item(6,1,A.SEARCH,'生徒・項目コードのマスタを先頭から一致するまで探索する。','探索',{page:8,choices:KANA.slice(0,opts.length)}),
+  item(6,2,A.REC,'曜日 Day を行、マスタ位置 i を列として記録値 Time を格納する。','多次元配列',{page:8,choices:KANA.slice(0,opts.length)}),
+  item(6,3,A.BEST,'0行目に最良値を置くので、より小さい記録を見つけたとき更新する。','最小値',{page:8,choices:KANA.slice(0,opts.length)}),
+  item(6,4,A.SORT,'最良値の昇順なので左が右より大きい場合に交換する。','交換法',{page:8,choices:KANA.slice(0,opts.length)}),
+  item(6,5,A.TIE,'最良値が同じ場合はコード昇順とするため Cod(j)>Cod(j+1) で交換する。','複数キー整列',{page:8,choices:KANA.slice(0,opts.length)})
+ ];
+ const desc=`<div class="qtitle"><span class="num">【6】</span>流れ図の説明を読んで、流れ図の⑴～⑸にあてはまる答えを解答群から選び、記号で答えなさい。</div><div class="instruction">＜流れ図の説明＞</div><div class="subhead">処理内容</div><div class="compact">${esc(cfg.title)}の1週間分の記録を読み、対象コードごとの週間最良記録を求めて成績一覧を表示する。</div><div class="subhead">入力データ</div>${fieldLayout(['対象コード Scode','曜日番号 Day','記録 Time'])}<div class="subhead">処理条件</div><ol class="spec-list"><li>配列 Cod と Name の添字は対応し、Cod は昇順で記憶される。</li><li>Rec の1～6行を曜日、列を対象コードに対応させ、0行目に週間最良値を求める。</li><li>記録のないセルは99.99で初期化する。</li><li>入力終了後、週間最良値の昇順に配列 Cod, Name, Rec を並べ替える。同値ならコード昇順とする。</li></ol>${bank.html}`;
+ let left=fnode('term','はじめ')+fnode('process','Cod, Name にマスタを記憶')+fnode('process','Rec を 99.99 で初期化')+fnode('io','データを読む')+fnode('loop','ループ1　データがある間')+fnode('process','1 → i')+fnode('loop',`ループ2　${blank(1)} の間`)+fnode('process','i + 1 → i')+fnode('loop','ループ2')+fnode('process',blank(2))+fnode('io','次のデータを読む')+fnode('loop','ループ1')+fnode('connector','A');
+ let right=fnode('connector','A')+fnode('loop','ループ3　i=1～件数')+fnode('process','Rec(0,i) = Rec(1,i)')+fnode('loop','ループ4　g=2～6')+fdecision(blank(3),'Rec(g,i) → Rec(0,i)','更新しない')+fnode('loop','ループ4')+fnode('loop','ループ3')+fnode('loop','ループ5　交換法')+fdecision(blank(4),'Cod, Name, Rec列を交換',fdecision('Rec(0,j) = Rec(0,j+1) かつ '+blank(5),'Cod, Name, Rec列を交換','交換しない'))+fnode('loop','ループ5')+fnode('loop','ループ6　i=1～件数')+fdecision('Rec(0,i) <= 基準A','"A" → Mark',fdecision('Rec(0,i) <= 基準B','"B" → Mark','"" → Mark'))+fnode('io','Cod, Name, Rec(0～6,i), Mark を表示')+fnode('loop','ループ6')+fnode('term','おわり');
+ return {desc,flow:flowPage(`【6】 ${cfg.title}　流れ図`,left,right,'※ マスタ探索・二次元記録・最良値抽出・複数キー整列を扱う。'),items};
+}
+
+function section7(seed,cfg){
+ return [section7Annual,section7TopN,section7Player,section7Rental,section7Achievement][(seed-1)%5](seed,cfg);
+}
+function section7Annual(seed,cfg){
+ const opts=[
+  {id:'CROSS',text:'Cross(place, genre) + 1 → Cross(place, genre)'},{id:'SORTLOOP',text:'h は g - 1 から 1 ずつ減らして h >= 1 の間'},
+  {id:'TIE_DATE',text:'Pub(Wk(0)) > Pub(Wk(h))'},{id:'TIE_CODE',text:'Pub(Wk(0)) = Pub(Wk(h)) And Mcode(Wk(0)) < Mcode(Wk(h))'},
+  {id:'STR1',text:'Str + Gname(k) + Rate + "%" → Str'},{id:'STR2',text:'Str + Pname(m) + Rate + "%" → Str'},
+  {id:'SEARCHDIR',text:'Mcode(mid) > Key'},{id:'BAD_CROSS',text:'Cross(genre, place) + 1 → Cross(genre, place)'},
+  {id:'BAD_SORT',text:'h は 1 から 1 ずつ増やして h <= g の間'},{id:'BAD_DATE',text:'Pub(Wk(0)) < Pub(Wk(h))'},
+  {id:'BAD_CODE',text:'Mcode(Wk(0)) > Mcode(Wk(h))'},{id:'BAD_STR1',text:'Str + Rate → Str'},{id:'BAD_STR2',text:'Pname(m) → Str'},
+  {id:'BAD_SEARCH',text:'Mcode(mid) < Key'},{id:'FOUND',text:'mid → pos'}
+ ];
+ const bank=choiceBank(opts,seed*227+13),A=bank.map;
+ const items=[
+  item(7,1,A.CROSS,'場所×分類のクロス集計表の該当セルへ1件を加算する。','多次元配列',{page:10,choices:KANA.slice(0,opts.length)}),
+  item(7,2,A.SORTLOOP,'挿入法では挿入位置を探すため g-1 から左向きに走査する。','挿入法',{page:10,choices:KANA.slice(0,opts.length)}),
+  item(7,3,[A.TIE_DATE,A.TIE_CODE],'回数が同じときは日付の降順、日付も同じならコードの昇順になる条件。二条件の順序は問わない。','複数キー整列',{page:10,choices:KANA.slice(0,opts.length),label:'2つ（順不同）',orderSensitive:false}),
+  item(7,4,[A.STR1,A.STR2],'分析方法1は分類名と割合、分析方法2は場所名と割合を既存の文字列 Str に連結する。','文字列処理',{page:10,choices:KANA.slice(0,opts.length),label:'①②の順に2つ'}),
+  item(7,5,A.SEARCHDIR,'二分探索で中央コードが探索キーより大きいときは左半分へ進む。','二分探索',{page:10,choices:KANA.slice(0,opts.length)})
+ ];
+ const desc=`<div class="qtitle"><span class="num">【7】</span>流れ図の説明を読んで、流れ図の⑴～⑸にあてはまる答えを解答群から選び、記号で答えなさい。</div><div class="instruction">＜流れ図の説明＞</div><div class="subhead">処理内容</div><div class="compact">${esc(cfg.title)}の1年分の${esc(cfg.entity)}データを読み、一覧と3種類の分析結果を表示する。</div>
+ <div class="subhead">入力データ</div>${fieldLayout(['日付 Date','場所番号 Place','項目コード Key'])}<div class="subhead">実行結果（例）</div>${outputBox(`(${cfg.title} 分析)\nコード  名称              日付       回数\n1051   Alpha             20260413   18\n1088   Beta              20251120   18\n…\n分析方法(1:場所 2:分類 3:全体 0:終了) 1\n場所名：P2\n分類A 31.2% ～ 分類E 7.8%`)}
+ <div class="subhead">処理条件</div><ol class="spec-list"><li>配列 Mcode, Mname, Pub に項目コード・名称・日付をコード昇順で記憶する。</li><li>入力の Key は二分探索し、Count に回数を集計する。</li><li>Cross の行方向を場所番号、列方向を分類番号とし、0行・0列を合計欄として使用する。</li><li>配列 Wk のみを、回数降順・日付降順・コード昇順の優先順で挿入法により並べ替える。</li><li>一覧表示後、0が入力されるまで3種類の分析を繰り返す。</li><li>複数解答欄はすべて正しい場合のみ得点とする。</li></ol>${arrayTable(['添字','1','2','…','n'],[['Mcode',1014,1069,'…',1988],['Mname','Alpha','Beta','…','Omega'],['Pub',20230105,20221017,'…',20191204]])}${bank.html}`;
+ const searchSub=fnode('sub','探索処理')+fnode('term','入口')+fnode('process','1 → low　n → high')+fnode('process','-1 → pos')+fnode('loop','ループS　low <= high かつ pos=-1')+fnode('process','(low + high) \\ 2 → mid')+fdecision('Mcode(mid) = Key','mid → pos',fdecision(blank(5),'mid - 1 → high','mid + 1 → low'))+fnode('loop','ループS')+fnode('term','出口');
+ let left=fnode('term','はじめ')+fnode('process','Mcode, Mname, Pub, 分類名, 場所名を記憶')+fnode('process','Count, Cross を初期化')+fnode('io','データを読む')+fnode('loop','ループ1　データがある間')+fnode('sub','探索処理を呼び出す')+fnode('process','pos → tyu')+fnode('process','Count(tyu) + 1 → Count(tyu)')+fnode('process','Mcode(tyu) \\ 1000 → genre')+fnode('process',blank(1))+fnode('process','Cross(place,0)+1 → Cross(place,0)')+fnode('process','Cross(0,genre)+1 → Cross(0,genre)')+fnode('process','Cross(0,0)+1 → Cross(0,0)')+fnode('io','次のデータを読む')+fnode('loop','ループ1')+fnode('loop','ループ2　i=1～n')+fnode('process','i → Wk(i)')+fnode('loop','ループ2')+fnode('connector','A');
+ let right=fnode('connector','A')+fnode('loop','ループ3　g=2～n')+fnode('process','Wk(g) → Wk(0)')+fnode('loop',`ループ4　${blank(2)}`)+fdecision('Count(Wk(0)) > Count(Wk(h))','Wk(h) → Wk(h+1)',fdecision('Count(Wk(0)) = Count(Wk(h))',fdecision(`${blank('3a')} または ${blank('3b')}`,'Wk(h) → Wk(h+1)','Exit Loop'),'Exit Loop'))+fnode('loop','ループ4')+fnode('process','Wk(0) → Wk(h+1)')+fnode('loop','ループ3')+fnode('loop','ループ5　i=1～n')+fnode('io','Mcode(Wk(i)), Mname(Wk(i)), Pub(Wk(i)), Count(Wk(i)) を表示')+fnode('loop','ループ5')+fnode('io','Method を入力')+fnode('loop','ループ6　Method <> 0 の間')+fdecision('Method = 1','PlaceNo を入力<br>"" → Str<br>分類ごとに割合を求め<br>'+blank('4a'),fdecision('Method = 2','GenreNo を入力<br>"" → Str<br>場所ごとに割合を求め<br>'+blank('4b'),'全体の場所×分類割合を Str に連結'))+fnode('io','Str を表示')+fnode('io','Method を入力')+fnode('loop','ループ6')+fnode('term','おわり')+searchSub;
+ return {desc,flow:flowPage(`【7】 ${cfg.title}　総合流れ図`,left,right,'※ 二分探索・クロス集計・間接配列による複数キー整列・対話型分析。'),items};
+}
+function section7TopN(seed,cfg){
+ const opts=[
+  {id:'SPLIT',text:'Pcode \\ 100 → Bun'},{id:'DAYADD',text:'DayCnt(Bun, No) + Ksu → DayCnt(Bun, No)'},{id:'RCMP',text:'DayCnt(Bun, j) < DayCnt(Bun, k)'},{id:'RUP',text:'Jun(j) + 1 → Jun(j)'},
+  {id:'TOP',text:'Jun(j) <= 5'},{id:'RATE',text:'Week(Bun, j) × 100 ÷ Week(Bun, 0) → Rate'},{id:'WEEKADD',text:'Week(Bun, No) + Ksu → Week(Bun, No)'},
+  {id:'BAD_SPLIT',text:'Pcode Mod 100 → Bun'},{id:'BAD_DAY',text:'DayCnt(No, Bun) + Ksu → DayCnt(No, Bun)'},{id:'BAD_CMP',text:'DayCnt(Bun, j) > DayCnt(Bun, k)'},{id:'BAD_UP',text:'Jun(k) + 1 → Jun(k)'},{id:'BAD_TOP',text:'Jun(j) >= 5'},{id:'BAD_RATE',text:'Week(Bun,0) × 100 ÷ Week(Bun,j) → Rate'},{id:'RESET',text:'DayCnt を0で初期化'}
+ ];
+ const bank=choiceBank(opts,seed*233+17),A=bank.map;
+ const items=[
+  item(7,1,A.SPLIT,'3桁の商品コードの百位を区分番号として取り出す。','コード分解',{page:10,choices:KANA.slice(0,opts.length)}),
+  item(7,2,A.DAYADD,'日別の区分×商品セルへ販売個数を加算する。','多次元配列',{page:10,choices:KANA.slice(0,opts.length)}),
+  item(7,3,[A.RCMP,A.RUP],'同一区分内で自分より個数の多い商品一つにつき順位を1増やす。','順位付け',{page:10,choices:KANA.slice(0,opts.length),label:'①②の順に2つ'}),
+  item(7,4,[A.TOP,A.RATE],'上位5位を表示する条件と、週間区分合計に対する構成比の式。','Top-N・構成比',{page:10,choices:KANA.slice(0,opts.length),label:'①②の順に2つ'}),
+  item(7,5,A.WEEKADD,'同じ入力を週間集計にも加算する。','集計',{page:10,choices:KANA.slice(0,opts.length)})
+ ];
+ const desc=`<div class="qtitle"><span class="num">【7】</span>流れ図の説明を読んで、⑴～⑸にあてはまる答えを解答群から選びなさい。</div><div class="instruction">＜流れ図の説明＞</div><div class="subhead">処理内容</div><div class="compact">${esc(cfg.title)}の1週間分の売上を読み、日別の区分集計と上位5商品、さらに週間分析を表示する。</div><div class="subhead">入力データ</div>${fieldLayout(['日付 Hiduke','商品コード Pcode','個数 Ksu'])}<div class="subhead">実行結果（例）</div>${outputBox('(売上集計結果)\n4月14日\n区分A  268個  1位:商品A 38個 ～ 5位:商品E 21個\n…\n(週間分析する区分番号を入力) 2\n商品C 14.8% ～ 商品H 5.2%')}<div class="subhead">処理条件</div><ol class="spec-list"><li>商品コードは「区分番号1桁＋区分内番号2桁」で構成する。</li><li>入力は日付・商品コード順で、日付が変わるたび前日の結果を表示する。</li><li>DayCnt は日別、Week は週間集計で、0列を区分合計に使う。</li><li>日別は同数を同順位として上位5位まで表示する。</li><li>最後に区分番号を入力し、週間構成比を表示する。0で終了する。</li></ol>${bank.html}`;
+ const daySub=fnode('sub','日別表示処理')+fnode('term','入口')+fnode('loop','ループD1　Bun=1～5')+fnode('process','1 → Jun(1～20)')+fnode('loop','ループD2　j=1～20')+fnode('loop','ループD3　k=1～20')+fdecision(blank('3a'),blank('3b'),'更新なし')+fnode('loop','ループD3')+fdecision(blank('4a'),'商品名,個数,Jun(j)を表示','表示しない')+fnode('loop','ループD2')+fnode('loop','ループD1')+fnode('process','DayCnt を0で初期化')+fnode('term','出口');
+ let left=fnode('term','はじめ')+fnode('process','DayCnt, Week を初期化')+fnode('io','データを読む')+fnode('process','Hiduke → Prev')+fnode('loop','ループ1　データがある間')+fdecision('Hiduke <> Prev','日別表示処理を呼び出す<br>Hiduke → Prev','そのまま')+fnode('process',blank(1))+fnode('process','Pcode Mod 100 → No')+fnode('process',blank(2))+fnode('process','DayCnt(Bun,0)+Ksu → DayCnt(Bun,0)')+fnode('process',blank(5))+fnode('process','Week(Bun,0)+Ksu → Week(Bun,0)')+fnode('io','次のデータを読む')+fnode('loop','ループ1')+fnode('sub','日別表示処理を呼び出す')+fnode('connector','A');
+ let right=fnode('connector','A')+fnode('io','Bun を入力')+fnode('loop','ループ2　Bun <> 0 の間')+fnode('process','"" → Str')+fnode('loop','ループ3　j=1～20')+fnode('process',blank('4b'))+fnode('process','商品名と Rate を Str に連結')+fnode('loop','ループ3')+fnode('io','Str を表示')+fnode('io','Bun を入力')+fnode('loop','ループ2')+fnode('term','おわり')+daySub;
+ return {desc,flow:flowPage(`【7】 ${cfg.title}　総合流れ図`,left,right,'※ コントロールブレイク・順位付け・Top-N・週間構成比。'),items};
+}
+function section7Player(seed,cfg){
+ const opts=[
+  {id:'SEARCH',text:'Pid(i) <> Sid'},{id:'GAME',text:'Skei(0, i) + 1 → Skei(0, i)'},{id:'TOTCMP',text:'Skei(Bun, Work(0)) > Skei(Bun, Work(h))'},{id:'TIEID',text:'Pid(Work(0)) < Pid(Work(h))'},
+  {id:'AVG',text:'Skei(Bun, i) ÷ Skei(0, i) → Work2(i)'},{id:'AVGCMP',text:'Work2(Work(0)) > Work2(Work(h))'},{id:'PTS',text:'Skei(1, i) + Pts → Skei(1, i)'},
+  {id:'BAD_SEARCH',text:'Pid(i) = Sid'},{id:'BAD_GAME',text:'Skei(0,i)-1 → Skei(0,i)'},{id:'BAD_TOT',text:'Skei(Bun,Work(0)) < Skei(Bun,Work(h))'},{id:'BAD_TIE',text:'Pid(Work(0)) > Pid(Work(h))'},{id:'BAD_AVG',text:'Skei(0,i) ÷ Skei(Bun,i) → Work2(i)'},{id:'BAD_AVGCMP',text:'Work2(Work(0)) < Work2(Work(h))'}
+ ];
+ const bank=choiceBank(opts,seed*239+19),A=bank.map;
+ const items=[
+  item(7,1,A.SEARCH,'選手IDが一致するまで昇順のマスタを先頭から探索する。','マスタ探索',{page:10,choices:KANA.slice(0,opts.length)}),
+  item(7,2,A.GAME,'1レコードにつき出場数を1増やす。','集計',{page:10,choices:KANA.slice(0,opts.length)}),
+  item(7,3,[A.TOTCMP,A.TIEID],'合計値の降順、同値なら選手IDの昇順になる挿入条件。','複数キー整列',{page:10,choices:KANA.slice(0,opts.length),label:'①②の順に2つ'}),
+  item(7,4,[A.AVG,A.AVGCMP],'1試合平均の計算式と、その値を降順にする比較条件。','平均・整列',{page:10,choices:KANA.slice(0,opts.length),label:'①②の順に2つ'}),
+  item(7,5,A.PTS,'得点欄はSkeiの1行目へ累計する。','多次元配列',{page:10,choices:KANA.slice(0,opts.length)})
+ ];
+ const desc=`<div class="qtitle"><span class="num">【7】</span>流れ図の説明を読んで、⑴～⑸にあてはまる答えを解答群から選びなさい。</div><div class="instruction">＜流れ図の説明＞</div><div class="subhead">処理内容</div><div class="compact">${esc(cfg.title)}の選手マスタと試合記録を読み、得点・リバウンド・アシストの分析結果を表示する。</div><div class="subhead">入力データ</div>${fieldLayout(['選手ID Sid','得点 Pts','リバウンド Reb','アシスト Ast'])}<div class="subhead">処理条件</div><ol class="spec-list"><li>Pid と Pname は選手ID昇順で対応している。</li><li>Skei の0行目を出場数、1～3行目を得点・リバウンド・アシスト合計とする。</li><li>分析区分1～3と分析方法1（合計）または2（1試合平均）を入力する。</li><li>Work に選手添字を記憶し、分析値の降順、同値なら選手ID昇順に並べ替える。</li><li>上位10名を表示する。</li></ol>${arrayTable(['添字','1','2','…','n'],[['Pid',104,105,'…',817],['Pname','A選手','B選手','…','Z選手']])}${bank.html}`;
+ let left=fnode('term','はじめ')+fnode('process','Pid, Pname, Team を記憶')+fnode('process','Skei を初期化')+fnode('io','出場データを読む')+fnode('loop','ループ1　データがある間')+fnode('process','1 → i')+fnode('loop',`ループ2　${blank(1)} の間`)+fnode('process','i+1 → i')+fnode('loop','ループ2')+fnode('process',blank(2))+fnode('process',blank(5))+fnode('process','Skei(2,i)+Reb → Skei(2,i)')+fnode('process','Skei(3,i)+Ast → Skei(3,i)')+fnode('io','次のデータを読む')+fnode('loop','ループ1')+fnode('connector','A');
+ let right=fnode('connector','A')+fnode('io','Bun(1～3), Method(1～2) を入力')+fnode('loop','ループ3　Bun <> 0 の間')+fnode('loop','ループ4　i=1～n')+fnode('process','i → Work(i)')+fdecision('Method = 2',blank('4a'),'計算しない')+fnode('loop','ループ4')+fnode('loop','ループ5　挿入法 g=2～n')+fnode('process','Work(g) → Work(0)')+fdecision('Method = 1',fdecision(blank('3a'),'右へ移動',fdecision('合計値が同じ かつ '+blank('3b'),'右へ移動','確定')),fdecision(blank('4b'),'右へ移動',fdecision('平均が同じ かつ Pid(Work(0)) < Pid(Work(h))','右へ移動','確定')))+fnode('loop','ループ5')+fnode('loop','ループ6　i=1～10')+fnode('io','選手名,チーム名,出場数,分析値を表示')+fnode('loop','ループ6')+fnode('io','Bun, Method を入力')+fnode('loop','ループ3')+fnode('term','おわり');
+ return {desc,flow:flowPage(`【7】 ${cfg.title}　総合流れ図`,left,right,'※ マスタ探索・4行集計・間接配列・合計/平均の切替分析。'),items};
+}
+function section7Rental(seed,cfg){
+ const opts=[
+  {id:'SEARCH',text:'Tcode(i) <> Code'},{id:'CROSS',text:'Cross(Store, Genre(i)) + 1 → Cross(Store, Genre(i))'},{id:'CNTCMP',text:'Cnt(Wk(0)) > Cnt(Wk(h))'},{id:'PUBCMP',text:'Pub(Wk(0)) > Pub(Wk(h))'},
+  {id:'R1',text:'Cross(StoreNo, g) × 100 ÷ Cross(StoreNo, 0) → Rate'},{id:'R2',text:'Cross(s, GenreNo) × 100 ÷ Cross(0, GenreNo) → Rate'},{id:'TITLEADD',text:'Cnt(i) + 1 → Cnt(i)'},
+  {id:'BAD_SEARCH',text:'Tcode(i) = Code'},{id:'BAD_CROSS',text:'Cross(Genre(i),Store)+1 → Cross(Genre(i),Store)'},{id:'BAD_CNT',text:'Cnt(Wk(0)) < Cnt(Wk(h))'},{id:'BAD_PUB',text:'Pub(Wk(0)) < Pub(Wk(h))'},{id:'BAD_R1',text:'Cross(StoreNo,0)×100÷Cross(StoreNo,g)→Rate'},{id:'BAD_R2',text:'Cross(0,GenreNo)×100÷Cross(s,GenreNo)→Rate'}
+ ];
+ const bank=choiceBank(opts,seed*241+23),A=bank.map;
+ const items=[
+  item(7,1,A.SEARCH,'作品コードに一致するマスタ位置を求める。','マスタ探索',{page:10,choices:KANA.slice(0,opts.length)}),
+  item(7,2,A.CROSS,'店舗×ジャンルの交点を1件増やす。','クロス集計',{page:10,choices:KANA.slice(0,opts.length)}),
+  item(7,3,[A.CNTCMP,A.PUBCMP],'作品を貸出回数降順、同数なら発売日降順にする比較条件。','複数キー整列',{page:10,choices:KANA.slice(0,opts.length),label:'①②の順に2つ'}),
+  item(7,4,[A.R1,A.R2],'店舗内ジャンル比率と、ジャンル内店舗比率の式。','構成比',{page:10,choices:KANA.slice(0,opts.length),label:'①②の順に2つ'}),
+  item(7,5,A.TITLEADD,'作品ごとの貸出回数を累計する。','集計',{page:10,choices:KANA.slice(0,opts.length)})
+ ];
+ const desc=`<div class="qtitle"><span class="num">【7】</span>流れ図の説明を読んで、⑴～⑸にあてはまる答えを解答群から選びなさい。</div><div class="instruction">＜流れ図の説明＞</div><div class="subhead">処理内容</div><div class="compact">${esc(cfg.title)}の貸出データを読み、作品別回数・店舗×ジャンル集計と分析結果を表示する。</div><div class="subhead">入力データ</div>${fieldLayout(['日付 Date','店舗 Store','作品コード Code'])}<div class="subhead">処理条件</div><ol class="spec-list"><li>Tcode, Title, Pub は作品コード昇順で対応し、Genre に各作品のジャンル番号を記憶する。</li><li>Cnt に作品別回数、Cross に店舗×ジャンル回数を求める。0行・0列は合計。</li><li>Wk のみを貸出回数降順、同数なら発売日降順、さらに同じなら作品コード昇順に並べ替える。</li><li>分析方法1は店舗内のジャンル比率、2はジャンル内の店舗比率、3は上位作品を表示する。</li></ol>${bank.html}`;
+ let left=fnode('term','はじめ')+fnode('process','作品・店舗・ジャンルマスタを記憶')+fnode('process','Cnt, Cross を初期化')+fnode('io','貸出データを読む')+fnode('loop','ループ1　データがある間')+fnode('process','1 → i')+fnode('loop',`ループ2　${blank(1)} の間`)+fnode('process','i+1 → i')+fnode('loop','ループ2')+fnode('process',blank(5))+fnode('process',blank(2))+fnode('process','Cross(Store,0)+1 → Cross(Store,0)')+fnode('process','Cross(0,Genre(i))+1 → Cross(0,Genre(i))')+fnode('process','Cross(0,0)+1 → Cross(0,0)')+fnode('io','次のデータを読む')+fnode('loop','ループ1')+fnode('connector','A');
+ let right=fnode('connector','A')+fnode('loop','ループ3　i=1～n')+fnode('process','i → Wk(i)')+fnode('loop','ループ3')+fnode('loop','ループ4　挿入法')+fdecision(blank('3a'),'Wk(h)を右へ移動',fdecision('Cnt(Wk(0)) = Cnt(Wk(h)) かつ '+blank('3b'),'Wk(h)を右へ移動','コード順を確認し確定'))+fnode('loop','ループ4')+fnode('io','Method を入力')+fnode('loop','ループ5　Method <> 0')+fdecision('Method=1','StoreNoを入力<br>'+blank('4a')+'<br>ジャンル名とRateを表示',fdecision('Method=2','GenreNoを入力<br>'+blank('4b')+'<br>店舗名とRateを表示','Wkの上位作品を表示'))+fnode('io','Method を入力')+fnode('loop','ループ5')+fnode('term','おわり');
+ return {desc,flow:flowPage(`【7】 ${cfg.title}　総合流れ図`,left,right,'※ マスタ探索・クロス集計・作品順位・2方向の構成比。'),items};
+}
+function section7Achievement(seed,cfg){
+ const opts=[
+  {id:'GROUP',text:'Code \\ 100 → G'},{id:'ADD',text:'Cnt(Term, G) + 1 → Cnt(Term, G)'},{id:'RATE',text:'Hit(Term, G) × 100 ÷ Cnt(Term, G) → Rate(Term, G)'},{id:'RCMP',text:'Rate(Term, Wk(0)) > Rate(Term, Wk(h))'},
+  {id:'TIE_CNT',text:'Cnt(Term, Wk(0)) > Cnt(Term, Wk(h))'},{id:'TIE_CODE',text:'Gcode(Wk(0)) < Gcode(Wk(h))'},{id:'TOTAL',text:'Cnt(Term, 0) + 1 → Cnt(Term, 0)'},
+  {id:'BAD_GROUP',text:'Code Mod 100 → G'},{id:'BAD_ADD',text:'Cnt(G,Term)+1 → Cnt(G,Term)'},{id:'BAD_RATE',text:'Cnt(Term,G)×100÷Hit(Term,G)→Rate(Term,G)'},{id:'BAD_RCMP',text:'Rate(Term,Wk(0)) < Rate(Term,Wk(h))'},{id:'BAD_CNT',text:'Cnt(Term,Wk(0)) < Cnt(Term,Wk(h))'},{id:'BAD_CODE',text:'Gcode(Wk(0)) > Gcode(Wk(h))'}
+ ];
+ const bank=choiceBank(opts,seed*251+29),A=bank.map;
+ const items=[
+  item(7,1,A.GROUP,'複合コードの上位部をグループ番号として取り出す。','コード分解',{page:10,choices:KANA.slice(0,opts.length)}),
+  item(7,2,A.ADD,'期間×グループの件数セルを1増やす。','多次元配列',{page:10,choices:KANA.slice(0,opts.length)}),
+  item(7,3,[A.RATE,A.RCMP],'達成率の式と、達成率降順に並べる比較条件。','割合・整列',{page:10,choices:KANA.slice(0,opts.length),label:'①②の順に2つ'}),
+  item(7,4,[A.TIE_CNT,A.TIE_CODE],'達成率同値時は件数降順、さらに同値ならコード昇順とする。','複数キー整列',{page:10,choices:KANA.slice(0,opts.length),label:'①②の順に2つ'}),
+  item(7,5,A.TOTAL,'期間ごとの0列に全件数を加算する。','合計欄',{page:10,choices:KANA.slice(0,opts.length)})
+ ];
+ const desc=`<div class="qtitle"><span class="num">【7】</span>流れ図の説明を読んで、⑴～⑸にあてはまる答えを解答群から選びなさい。</div><div class="instruction">＜流れ図の説明＞</div><div class="subhead">処理内容</div><div class="compact">${esc(cfg.title)}の記録を読み、期間別・グループ別の件数と達成率を求め、順位表と指定期間の分析を表示する。</div><div class="subhead">入力データ</div>${fieldLayout(['期間 Term','複合コード Code','結果 Result'])}<div class="subhead">処理条件</div><ol class="spec-list"><li>Code は「グループ番号2桁＋個別番号2桁」で構成する。</li><li>Cnt に件数、Hit に達成件数を記憶し、0列を期間合計に使う。</li><li>Rate=Hit÷Cnt×100 を求める。</li><li>Wk のみを達成率降順、同率なら件数降順、さらに同じならグループコード昇順に並べ替える。</li><li>期間番号を入力して順位表を表示し、0で終了する。</li></ol>${bank.html}`;
+ let left=fnode('term','はじめ')+fnode('process','Cnt, Hit, Rate を初期化')+fnode('io','データを読む')+fnode('loop','ループ1　データがある間')+fnode('process',blank(1))+fnode('process',blank(2))+fnode('process',blank(5))+fdecision('Result = 1','Hit(Term,G)+1 → Hit(Term,G)','そのまま')+fnode('io','次のデータを読む')+fnode('loop','ループ1')+fnode('loop','ループ2　Term=1～4, G=1～m')+fdecision('Cnt(Term,G)>0',blank('3a'),'0 → Rate(Term,G)')+fnode('loop','ループ2')+fnode('connector','A');
+ let right=fnode('connector','A')+fnode('io','Term を入力')+fnode('loop','ループ3　Term <> 0')+fnode('loop','ループ4　G=1～m')+fnode('process','G → Wk(G)')+fnode('loop','ループ4')+fnode('loop','ループ5　挿入法')+fdecision(blank('3b'),'Wk(h)を右へ移動',fdecision('Rateが同じ かつ '+blank('4a'),'Wk(h)を右へ移動',fdecision('Rateと件数が同じ かつ '+blank('4b'),'Wk(h)を右へ移動','確定')))+fnode('loop','ループ5')+fnode('loop','ループ6　順位=1～m')+fnode('io','グループ名,件数,達成率を表示')+fnode('loop','ループ6')+fnode('io','Term を入力')+fnode('loop','ループ3')+fnode('term','おわり');
+ return {desc,flow:flowPage(`【7】 ${cfg.title}　総合流れ図`,left,right,'※ コード分解・達成率・間接配列の3キー整列・指定期間分析。'),items};
+}
+function buildExam(n){
+ const sc=SCENARIOS[(n-1)%SCENARIOS.length];
+ const q12=buildQ1Q2(n),q3=buildQ3(n),q4=buildQ4(n),q5=section5(n,sc.q5),q6=section6(n,sc.q6),q7=section7(n,sc.q7);
+ const pages=[
+  pageShell(n,1,q12.html),
+  pageShell(n,2,q3.html),
+  pageShell(n,3,q4.p1.html),
+  pageShell(n,4,q4.p2.html),
+  pageShell(n,5,q5.desc),
+  pageShell(n,6,q5.flow,'flow-paper'),
+  pageShell(n,7,q6.desc),
+  pageShell(n,8,q6.flow,'flow-paper'),
+  pageShell(n,9,q7.desc),
+  pageShell(n,10,q7.flow,'flow-paper')
+ ];
+ const items=[...q12.items,...q3.items,...q4.items,...q5.items,...q6.items,...q7.items];
+ return {n,title:`本番形式模試 ${n}`,scenario:`${sc.q5.title} / ${sc.q6.title} / ${sc.q7.title}`,pages,items};
+}
+const EXAMS=Array.from({length:10},(_,i)=>buildExam(i+1));
+(function validateExams(){
+ const expected={1:5,2:5,3:5,4:5,5:5,6:5,7:5};
+ for(const e of EXAMS){
+  if(e.pages.length!==10)throw new Error(`模試${e.n}: pages=${e.pages.length}`);
+  if(e.items.length!==35)throw new Error(`模試${e.n}: items=${e.items.length}`);
+  let total=0; const seen=new Set();
+  for(const it of e.items){const k=`${it.sec}-${it.no}`;if(seen.has(k))throw new Error(`模試${e.n}: duplicate ${k}`);seen.add(k);total+=SEC_POINTS[it.sec];}
+  for(const [sec,cnt] of Object.entries(expected)){if(e.items.filter(x=>x.sec===Number(sec)).length!==cnt)throw new Error(`模試${e.n}: section ${sec}`)}
+  if(total!==100)throw new Error(`模試${e.n}: total=${total}`);
+ }
+})();
+</script>
+<script>'use strict';
+const STATE={view:'home',exam:null,page:1,timer:null,remaining:3600};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const STORE_MEM={};const STORE={get(k){try{const v=localStorage.getItem(k);return v===null?(STORE_MEM[k]??null):v}catch{return STORE_MEM[k]??null}},set(k,v){STORE_MEM[k]=v;try{localStorage.setItem(k,v)}catch{}},del(k){delete STORE_MEM[k];try{localStorage.removeItem(k)}catch{}}};
+const keyProgress=n=>`zensho-prog1-v3-progress-${n}`, keyResult=n=>`zensho-prog1-v3-result-${n}`;
+function safeJSON(s,fallback={}){try{return JSON.parse(s)||fallback}catch{return fallback}}
+function getProgress(n){return safeJSON(STORE.get(keyProgress(n)),{answers:{},deadline:null})}
+function setProgress(n,p){STORE.set(keyProgress(n),JSON.stringify(p))}
+function getResult(n){return safeJSON(STORE.get(keyResult(n)),null)}
+function showView(id){$$('.view').forEach(v=>v.classList.toggle('on',v.id===id));$$('.topnav button').forEach(b=>b.classList.toggle('on',b.dataset.view===id));STATE.view=id;window.scrollTo({top:0,behavior:'instant'});if(id!=='exam') closeSheet()}
+function setupNav(){ $$('.topnav button').forEach(b=>b.addEventListener('click',()=>{renderView(b.dataset.view);showView(b.dataset.view)})); }
+
+function renderHome(){
+ const el=$('#home');
+ el.innerHTML=`<div class="card hero"><div><div class="kicker">第75回直前・現行1級形式向け</div><h2>問題冊子の読み方まで<br>本番に寄せる。</h2><p>第75回で実施される現行「1級プログラミング」（PBT・60分・マクロ言語）を想定し、第72～74回を中心に10ページの問題冊子・別解答用紙・100点の採点構造を再現。問題本文はすべてオリジナルで、公式過去問そのものは転載せず公式PDFへリンクします。</p><div class="actions"><button class="primary" onclick="startExam(1)">模試1を60分で開始</button><button class="ghost" onclick="renderView('analysis');showView('analysis')">再現仕様を見る</button></div></div><div class="hero-stat"><b>10 × 100</b><span>10回・各100点</span><b style="margin-top:22px">10 pages</b><span>表紙＋本番型10ページ構成</span><b style="margin-top:22px">60:00</b><span>試験時間</span></div></div>
+ <div class="section-title"><h2>採点構造</h2><span class="fine">近年形式に合わせた固定配点</span></div><div class="format-grid">${[[1,'用語','10'],[2,'対応','10'],[3,'基礎・計算','10'],[4,'プログラム','15'],[5,'流れ図','15'],[6,'流れ図','15'],[7,'総合流れ図','25']].map(x=>`<div class="format-chip"><span>【${x[0]}】${x[1]}</span><b>${x[2]}点</b></div>`).join('')}</div>
+ <div class="section-title"><h2>本番に寄せたところ</h2></div><div class="card"><div class="two-col"><div><b>問題冊子</b><ul><li>1ページ目に【1】【2】</li><li>2ページ目に【3】</li><li>【4】はマクロ言語のプログラム2題で2ページ</li><li>【5】～【7】は「説明ページ→流れ図ページ」</li><li>配列表・入力レコード・実行結果例・解答群を併記</li></ul></div><div><b>解答・採点</b><ul><li>問題上ではなく別の解答用紙に記入</li><li>【7】に複数解答セルあり</li><li>複数セルは全て正解で5点</li><li>答案を自動保存</li><li>採点後は全35採点欄に解説</li></ul></div></div></div>`;
+}
+function renderMocks(){
+ const el=$('#mocks');
+ el.innerHTML=`<div class="section-title"><div><h2>本番形式模試 10回</h2><div class="fine">各回 10ページ / 35採点欄 / 100点 / 60分</div></div></div><div class="mock-grid">${EXAMS.map(e=>{const r=getResult(e.n);return `<div class="card mock-card"><div class="mock-no">${e.n}</div><div class="mock-meta"><h3>${e.title}</h3><p>${esc(e.scenario)}</p><p>【4】整列・探索・順位付け → 【5】～【7】業務処理</p></div><div><div class="score-pill ${r?(r.score>=70?'pass':'fail'):''}">${r?`${r.score}点`:'未受験'}</div><button class="ghost small" onclick="startExam(${e.n})">${r?'もう一度':'開始'}</button></div></div>`}).join('')}</div>`;
+}
+const PAST_YEARS={74:2025,73:2025,72:2024,71:2024,70:2024,69:2023,68:2023,67:2022,66:2022,65:2021,64:2021,63:2020,62:2019,61:2019,60:2019,59:2018,58:2018,57:2017,56:2017,55:2016,54:2016,53:2015,52:2015,51:2014,50:2014,49:2013,48:2013,47:2012,46:2012,45:2011,44:2011,43:2010,42:2010,41:2009,40:2009,39:2008};
+function pastUrl(n){return `https://zensho.or.jp/puf/download/exam/pastexam/${PAST_YEARS[n]}/info_${n}_1_pro.pdf`}
+function renderPast(){
+ const el=$('#past');
+ el.innerHTML=`<div class="section-title"><div><h2>公式過去問</h2><div class="fine">全商公式で現在公開されている第39回～第74回の1級プログラミング</div></div><a class="ghost small" href="https://zensho.or.jp/examination/pastexams/information/" target="_blank" rel="noopener">公式一覧</a></div><div class="card" style="margin-bottom:12px"><b>直前なら第74 → 73 → 72の順がおすすめ。</b><div class="muted">古い回ほど出題方式が現行形式と異なる。特に第64回以前は言語選択など現在と違う構成があるため、形式練習は近年回を優先。</div></div><div class="past-grid">${Array.from({length:36},(_,i)=>74-i).map(n=>`<a class="past-link" href="${pastUrl(n)}" target="_blank" rel="noopener"><b>第${n}回</b><span>1級 プログラミング PDF ↗</span></a>`).join('')}</div>`;
+}
+function renderAnalysis(){
+ const el=$('#analysis');
+ el.innerHTML=`<div class="section-title"><div><h2>現行形式の逆算</h2><div class="fine">第67～74回を中心に紙面単位で比較して模試側へ反映</div></div></div>
+ <div class="card"><table class="analysis-table"><thead><tr><th>ページ</th><th>本番の役割</th><th>V3での再現</th><th>採点</th></tr></thead><tbody>
+ <tr><td>1</td><td>【1】用語5 + 【2】対応5</td><td>共通解答群 / A群・B群</td><td>20点</td></tr>
+ <tr><td>2</td><td>【3】3択4 + 計算1</td><td>ア～ウ選択 + 数値記入</td><td>10点</td></tr>
+ <tr><td>3–4</td><td>【4】プログラム2題</td><td>マクロ言語 / Sub中心 / 配列0番地 / 解答群 / 空欄計5</td><td>15点</td></tr>
+ <tr><td>5–6</td><td>【5】業務処理</td><td>マスタ探索 / 2次元集計 / 整列・比率 または コントロールブレイク</td><td>15点</td></tr>
+ <tr><td>7–8</td><td>【6】業務処理</td><td>コード分解・期間判定・上位抽出 または マスタ探索・複数キー整列</td><td>15点</td></tr>
+ <tr><td>9–10</td><td>【7】総合処理</td><td>二分探索 + クロス集計 + 間接配列の複数キー整列 + 3方式分析</td><td>25点</td></tr>
+ </tbody></table></div>
+ <div class="section-title"><h2>頻出の処理パターン</h2></div><div class="card"><div class="two-col"><div><b>【4】</b><ul><li>交換法（バブル）</li><li>選択法</li><li>挿入法</li><li>二分探索（反復）</li><li>順位付け</li></ul></div><div><b>【5】～【7】</b><ul><li>添字0を合計・作業領域に利用</li><li>整数除算 / Mod によるコード分解・期間分類</li><li>コントロールブレイク / 境界値による区分探索</li><li>マスタ探索→添字変換→クロス集計</li><li>関連配列・間接配列を用いた複数キー整列</li><li>Top-N抽出 / 構成比 / 対話型の指定条件分析</li></ul></div></div></div>
+ <div class="card" style="margin-top:12px"><b>重要：</b>このサイトは公式問題の転載・言い換えではなく、<b>構成・採点・要求される処理パターン</b>を分析して作った独自問題。公式問題は「公式過去問」から原本を開ける。</div>`;
+}
+function renderView(id){({home:renderHome,mocks:renderMocks,past:renderPast,analysis:renderAnalysis}[id]||(()=>{}))()}
+
+function startExam(n){
+ STATE.exam=EXAMS[n-1];STATE.page=1;const p=getProgress(n);if(!p.deadline||p.deadline<Date.now()){p.deadline=Date.now()+3600_000;p.answers={};setProgress(n,p)}
+ renderExam();showView('exam');startTimer();
+}
+function quickSheetHTML(){
+ const e=STATE.exam,p=getProgress(e.n);
+ const one=(it)=>{const cur=p.answers[ansKey(it)]||[];const inputs=it.answer.map((_,i)=>renderInput(it,i,cur[i]||'')).join('');return `<div class="quick-row" data-page="${it.page||0}"><label>【${it.sec}】${it.no}</label><div class="${it.answer.length>1?'quick-double':''}">${inputs}</div></div>`};
+ const desktop=[1,2,3,4,5,6,7].map(sec=>`<div class="quick-sec">【${sec}】</div>${e.items.filter(x=>x.sec===sec).map(one).join('')}`).join('');
+ const pageItems=e.items.filter(x=>x.page===STATE.page);
+ const mobile=pageItems.length?pageItems.map(one).join(''):`<div class="fine" style="padding:7px 2px;min-width:230px">このページは説明ページです。答案欄は流れ図ページに表示されます。</div>`;
+ return `<aside class="quick-sheet" aria-label="答案欄"><div class="quick-sheet-head"><div><b>答案</b><div class="mobile-answer-title">ページ${STATE.page}の解答欄</div></div><span>入力は自動保存</span><button class="ghost small" type="button" onclick="openSheet()">全体</button></div><div class="quick-answer-list quick-desktop">${desktop}</div><div class="quick-answer-list quick-mobile">${mobile}</div></aside>`;
+}
+function bindQuickInputs(){document.querySelectorAll('.quick-sheet select,.quick-sheet input').forEach(x=>{x.addEventListener('change',saveAnswer);if(x.tagName==='INPUT')x.addEventListener('input',saveAnswer)})}
+function renderExam(){
+ const e=STATE.exam,el=$('#exam');
+ el.innerHTML=`<div class="exam-toolbar"><div class="exam-tools"><button class="ghost small" onclick="leaveExam()">← 一覧</button><button class="ghost small" onclick="showCover()">表紙</button><button class="ghost small desktop-sheet-btn" onclick="openSheet()">全解答用紙</button></div><div class="page-tabs">${Array.from({length:10},(_,i)=>`<button class="${STATE.page===i+1?'on':''}" onclick="gotoPage(${i+1})">${i+1}</button>`).join('')}</div><div id="timer" class="timer">60:00</div></div><div class="exam-layout"><div class="exam-main"><div class="page-wrap">${e.pages[STATE.page-1]}</div><div class="actions" style="justify-content:center"><button class="ghost" ${STATE.page===1?'disabled':''} onclick="gotoPage(${STATE.page-1})">← 前ページ</button><button class="ghost desktop-sheet-btn" onclick="openSheet()">全解答用紙</button><button class="ghost" ${STATE.page===10?'disabled':''} onclick="gotoPage(${STATE.page+1})">次ページ →</button></div><div class="exam-mobile-spacer"></div></div>${quickSheetHTML()}</div>`;
+ renderAnswerSheet();bindQuickInputs();updateTimer();
+}
+function gotoPage(n){STATE.page=Math.max(1,Math.min(10,n));renderExam();window.scrollTo({top:0,behavior:'instant'})}
+function showCover(){const el=$('#exam');el.innerHTML=`<div class="exam-toolbar"><div class="exam-tools"><button class="ghost small" onclick="leaveExam()">← 一覧</button><button class="primary small" onclick="renderExam()">問題へ</button></div><div class="timer" id="timer">${String(Math.floor(STATE.remaining/60)).padStart(2,'0')}:${String(STATE.remaining%60).padStart(2,'0')}</div><div></div></div><div class="page-wrap">${coverShell(STATE.exam.n)}</div>`;updateTimer();window.scrollTo({top:0,behavior:'instant'})}
+function leaveExam(){clearInterval(STATE.timer);STATE.timer=null;renderMocks();showView('mocks')}
+function openSheet(){renderAnswerSheet();$('#sheetDrawer').setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+function closeSheet(){$('#sheetDrawer').setAttribute('aria-hidden','true');document.body.style.overflow=''}
+function ansKey(it){return `${it.sec}-${it.no}`}
+function renderInput(it,idx,current){
+ if(it.kind==='number')return `<input type="text" inputmode="decimal" data-key="${ansKey(it)}" data-idx="${idx}" value="${esc(current||'')}" aria-label="【${it.sec}】${it.no}">`;
+ return `<select data-key="${ansKey(it)}" data-idx="${idx}" aria-label="【${it.sec}】${it.no}"><option value=""></option>${it.choices.map(c=>`<option value="${c}" ${current===c?'selected':''}>${c}</option>`).join('')}</select>`;
+}
+function renderAnswerSheet(){
+ if(!STATE.exam)return; const e=STATE.exam,p=getProgress(e.n),wrap=$('#answerSheet'); $('#drawerExamTitle').textContent=e.title;
+ const secItems=s=>e.items.filter(x=>x.sec===s);
+ const inputCell=(it)=>{const cur=p.answers[ansKey(it)]||[];if(it.answer.length===1)return `<div class="ans">${renderInput(it,0,cur[0]||'')}</div>`;return `<div class="ans double">${it.answer.map((_,i)=>renderInput(it,i,cur[i]||'')).join('')}</div>`};
+ const row=s=>{const xs=secItems(s);return `<tr><th class="sec">【${s}】</th>${xs.map(it=>`<td><div class="no">${it.no}</div>${inputCell(it)}</td>`).join('')}<td class="scorebox"><span>小計</span><b>${xs.length*SEC_POINTS[s]}</b></td></tr>`};
+ wrap.innerHTML=`<div class="sheet"><div class="sheet-headline">非公式　本番形式模試 ${e.n}　プログラミング 第1級</div><div class="sheet-subtitle">解答用紙</div><div class="sheet-scroll"><table class="official-sheet"><tbody>${[1,2,3,4,5,6,7].map(row).join('')}</tbody></table></div><div class="sheet-note">複数解答欄は、その設問のすべての欄が正しいときに得点。⑦の一部は順不同。</div><div class="sheet-actions"><button class="ghost" type="button" onclick="closeSheet()">問題へ戻る</button><button class="primary" type="button" onclick="submitExam()">採点する</button></div><div class="fine" style="margin-top:8px">入力内容はこの端末のブラウザに自動保存されます。</div></div>`;
+ wrap.querySelectorAll('select,input').forEach(x=>x.addEventListener('change',saveAnswer));wrap.querySelectorAll('input').forEach(x=>x.addEventListener('input',saveAnswer));
+}
+function saveAnswer(ev){const e=STATE.exam,p=getProgress(e.n),el=ev.target,k=el.dataset.key,idx=Number(el.dataset.idx),v=el.value.trim();p.answers[k]=p.answers[k]||[];p.answers[k][idx]=v;setProgress(e.n,p);document.querySelectorAll(`[data-key="${k}"][data-idx="${idx}"]`).forEach(x=>{if(x!==el&&x.value!==v)x.value=v})}
+function normalize(v){return String(v??'').trim().replace(/％/g,'%').replace(/\s+/g,'').toUpperCase()}
+function correctItem(it,given){const a=it.answer.map(normalize),g=(given||[]).map(normalize);if(g.length<a.length)return false;if(it.orderSensitive===false)return [...a].sort().join('|')===[...g].sort().join('|');return a.every((x,i)=>x===g[i])}
+function submitExam(){
+ const e=STATE.exam,p=getProgress(e.n);let score=0;const details=[],sections={};
+ e.items.forEach(it=>{const ok=correctItem(it,p.answers[ansKey(it)]);const pt=ok?SEC_POINTS[it.sec]:0;score+=pt;sections[it.sec]=(sections[it.sec]||0)+pt;details.push({key:ansKey(it),ok,pt,given:p.answers[ansKey(it)]||[],answer:it.answer,exp:it.explanation,topic:it.topic,sec:it.sec,no:it.no})});
+ const result={score,details,sections,at:Date.now()};STORE.set(keyResult(e.n),JSON.stringify(result));clearInterval(STATE.timer);STATE.timer=null;closeSheet();renderReview(e,result);showView('review');
+}
+function renderReview(e,r){
+ const max={1:10,2:10,3:10,4:15,5:15,6:15,7:25};const topics={};r.details.forEach(d=>{topics[d.topic]=topics[d.topic]||{ok:0,n:0};topics[d.topic].n++;if(d.ok)topics[d.topic].ok++});
+ $('#review').innerHTML=`<div class="card result-hero"><div class="result-score ${r.score>=70?'pass':'fail'}">${r.score}</div><div><div class="kicker">${e.title}</div><h2 style="margin:3px 0">${r.score>=70?'70点を超えた。':'弱点を潰してもう1回。'}</h2><div class="muted">合格ラインの目安を70点として表示。採点は本サイトの独自模試に対するものです。</div><div class="actions"><button class="primary" onclick="startExam(${e.n})">もう一度解く</button><button class="ghost" onclick="renderMocks();showView('mocks')">模試一覧</button></div></div></div>
+ <div class="section-title"><h2>大問別</h2></div><div class="breakdown">${[1,2,3,4,5,6,7].map(s=>`<div class="break-item"><span>【${s}】</span><b>${r.sections[s]||0}/${max[s]}</b></div>`).join('')}</div>
+ <div class="section-title"><h2>分野別</h2></div><div class="card topic-bars">${Object.entries(topics).sort((a,b)=>a[1].ok/a[1].n-b[1].ok/b[1].n).map(([t,v])=>{const pct=Math.round(v.ok/v.n*100);return `<div class="topic-row"><span>${esc(t)}</span><div class="topic-track"><i style="width:${pct}%"></i></div><span>${v.ok}/${v.n}</span></div>`}).join('')}</div>
+ <div class="section-title"><h2>全35採点欄の解説</h2></div>${r.details.map(d=>`<div class="review-item ${d.ok?'ok':'ng'}"><h4>【${d.sec}】${d.no}　${d.ok?'○ 正解':'× 要復習'}　<span class="fine">${SEC_POINTS[d.sec]}点</span></h4><div class="review-answer">あなた：${d.given.length?d.given.map(esc).join(' / '):'未解答'}　｜　正解：<b>${d.answer.map(esc).join(' / ')}</b></div><div class="review-exp">${esc(d.exp)}</div></div>`).join('')}`;
+}
+function startTimer(){clearInterval(STATE.timer);STATE.timer=setInterval(updateTimer,1000);updateTimer()}
+function updateTimer(){if(!STATE.exam)return;const p=getProgress(STATE.exam.n);STATE.remaining=Math.max(0,Math.ceil((p.deadline-Date.now())/1000));const m=Math.floor(STATE.remaining/60),s=STATE.remaining%60,el=$('#timer');if(el){el.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;el.classList.toggle('danger',STATE.remaining<=300)}if(STATE.remaining===0&&STATE.timer){clearInterval(STATE.timer);STATE.timer=null;openSheet()}}
+function resetExam(n){STORE.del(keyProgress(n));STORE.del(keyResult(n));renderMocks()}
+
+$('#closeSheet').addEventListener('click',closeSheet);$('.drawer__scrim').addEventListener('click',closeSheet);$('#themeBtn').addEventListener('click',()=>{document.body.classList.toggle('dark');STORE.set('zensho-v3-dark',document.body.classList.contains('dark')?'1':'0')});
+if(STORE.get('zensho-v3-dark')==='1')document.body.classList.add('dark');
+setupNav();renderHome();
+</script>
+</body>
+</html>
