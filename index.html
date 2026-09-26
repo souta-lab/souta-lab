@@ -37,6 +37,46 @@ body.dark{--bg:#1f211f;--panel:#272a27;--paper:#fbfaf6;--ink:#f3f3ef;--mut:#b9b7
 
 .sheet-scroll{overflow-x:auto;padding-bottom:4px}.official-sheet{min-width:780px;border-collapse:collapse;width:100%;table-layout:fixed;font-family:var(--serif)}.official-sheet th,.official-sheet td{border:1px solid #555;text-align:center;padding:0;height:62px}.official-sheet .sec{width:64px;border:0;font-weight:800;font-size:18px;text-align:left;padding-right:8px}.official-sheet .no{height:24px;font-size:12px;font-weight:500}.official-sheet .ans{height:54px}.official-sheet input,.official-sheet select{width:100%;height:100%;border:0;background:transparent;text-align:center;font-size:20px;font-family:var(--sans);outline:none}.official-sheet .double{display:grid;grid-template-columns:1fr 1fr;height:100%}.official-sheet .double>*+*{border-left:1px solid #555}.official-sheet .scorebox{border:0;width:72px;font-family:var(--sans);font-size:11px}.official-sheet .scorebox b{display:block;font-size:18px}.sheet-headline{text-align:center;margin:0 0 5px;font-size:12px}.sheet-subtitle{text-align:center;letter-spacing:.35em;font-size:22px;font-weight:800;margin-bottom:14px}.sheet-note{font-size:11px;margin-top:10px}.cover-paper{display:flex;flex-direction:column;justify-content:space-between;text-align:center;padding:60px 70px 55px}.cover-paper .cover-top{display:flex;justify-content:space-between;font-size:13px}.cover-paper .cover-title{margin:auto 0}.cover-paper .cover-title .year{font-size:22px;font-weight:700}.cover-paper .cover-title h2{font-size:38px;letter-spacing:.16em;margin:14px 0}.cover-paper .cover-title h3{font-size:30px;margin:8px 0}.cover-paper .notice{border:2px dotted #555;padding:18px 24px;text-align:left;width:88%;margin:35px auto 0}.cover-paper .notice b{display:block;text-align:center;letter-spacing:.25em;margin-bottom:10px}.cover-paper .notice ol{margin:0;padding-left:1.7em}.cover-paper .org{font-weight:700;font-size:17px}.cover-paper .candidate{margin-left:auto;border:1px solid #555;width:160px;height:70px;padding-top:6px;font-size:12px}
 </style>
+<style>
+.book-index-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.mock-actions{display:grid;gap:6px;justify-items:stretch}
+.book-index-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px}
+.book-index-card h3{margin:0 0 3px}
+.book-index-card p{margin:0;color:var(--mut);font-size:13px}
+.book-card-label{font-family:var(--serif);width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:1px solid #b6b0a5;font-size:19px}
+.book-reader{max-width:900px;margin:0 auto}
+.book-reader-head{padding:clamp(22px,5vw,48px);text-align:center;background:#faf8f3}
+.book-reader-head h1{font-family:var(--serif);font-size:clamp(26px,4vw,40px);margin:8px 0 14px}
+.book-reader-head p{max-width:690px;margin:0 auto;color:var(--mut);text-align:left}
+.book-reader-actions{display:flex;justify-content:space-between;gap:10px;margin-bottom:14px}
+.book-toc{margin:16px 0;padding:20px 24px}
+.book-toc h2{font-size:18px;margin:0 0 9px}
+.book-toc ol{margin:0;padding-left:1.6em;columns:2;column-gap:30px}
+.book-toc li{break-inside:avoid;padding:3px 0}
+.book-toc a{color:inherit;text-decoration-color:#aaa}
+.book-chapter{margin:16px 0;padding:clamp(20px,4vw,36px);border-top:3px solid var(--accent);background:var(--paper);font-family:var(--serif)}
+.book-chapter h2{font-size:clamp(20px,3vw,27px);margin:0 0 17px}
+.book-chapter p{margin:0 0 1.1em;line-height:1.95}
+.book-chapter p:last-child{margin-bottom:0}
+.book-takeaways{margin-top:20px}
+.book-takeaways h2{font-size:20px}
+.book-takeaways ul{margin:0;padding-left:1.4em}
+.book-takeaways li{margin:7px 0}
+.book-status{padding:22px;text-align:center}
+.dark .book-reader-head,.dark .book-toc,.dark .book-chapter,.dark .book-takeaways{background:var(--paper);color:#171717}
+.dark .book-reader-head p{color:#4a4a4a}
+@media(max-width:700px){.book-index-grid{grid-template-columns:1fr}.book-index-card{grid-template-columns:auto 1fr;align-items:start}.book-index-card .book-open{grid-column:2;justify-self:start}.book-toc ol{columns:1}}
+@media print{
+  #books.view.on{display:block!important}
+  #books .book-index-grid,#books .book-reader-actions{display:none!important}
+  #books .book-reader{display:block!important;max-width:none;margin:0}
+  #books .book-reader-head,.book-toc,.book-chapter{box-shadow:none;border-radius:0}
+  #books .book-reader-head{padding:12mm 15mm}
+  #books .book-chapter{margin:0;padding:12mm 15mm;break-inside:auto}
+  #books .book-chapter h2{break-after:avoid-page}
+  #books .book-takeaways{break-before:page}
+}
+</style>
 </head>
 <body>
 <header class="site-head">
@@ -51,12 +91,14 @@ body.dark{--bg:#1f211f;--panel:#272a27;--paper:#fbfaf6;--ink:#f3f3ef;--mut:#b9b7
 <nav class="topnav" aria-label="メインメニュー">
   <button data-view="home" class="on">ホーム</button>
   <button data-view="mocks">模擬10回</button>
+  <button data-view="books">解説本10冊</button>
   <button data-view="past">公式過去問</button>
   <button data-view="analysis">形式分析</button>
 </nav>
 <main id="app" class="shell">
   <section id="home" class="view on"></section>
   <section id="mocks" class="view"></section>
+  <section id="books" class="view"></section>
   <section id="past" class="view"></section>
   <section id="analysis" class="view"></section>
   <section id="exam" class="view"></section>
@@ -513,15 +555,41 @@ function setupNav(){ $$('.topnav button').forEach(b=>b.addEventListener('click',
 
 function renderHome(){
  const el=$('#home');
- el.innerHTML=`<div class="card hero"><div><div class="kicker">第75回直前・現行1級形式向け</div><h2>問題冊子の読み方まで<br>本番に寄せる。</h2><p>第75回で実施される現行「1級プログラミング」（PBT・60分・マクロ言語）を想定し、第72～74回を中心に10ページの問題冊子・別解答用紙・100点の採点構造を再現。問題本文はすべてオリジナルで、公式過去問そのものは転載せず公式PDFへリンクします。</p><div class="actions"><button class="primary" onclick="startExam(1)">模試1を60分で開始</button><button class="ghost" onclick="renderView('analysis');showView('analysis')">再現仕様を見る</button></div></div><div class="hero-stat"><b>10 × 100</b><span>10回・各100点</span><b style="margin-top:22px">10 pages</b><span>表紙＋本番型10ページ構成</span><b style="margin-top:22px">60:00</b><span>試験時間</span></div></div>
+ el.innerHTML=`<div class="card hero"><div><div class="kicker">第75回直前・現行1級形式向け</div><h2>問題冊子の読み方まで<br>本番に寄せる。</h2><p>第75回で実施される現行「1級プログラミング」（PBT・60分・マクロ言語）を想定し、第72～74回を中心に10ページの問題冊子・別解答用紙・100点の採点構造を再現。問題本文はすべてオリジナルで、公式過去問そのものは転載せず公式PDFへリンクします。</p><div class="actions"><button class="primary" onclick="startExam(1)">模試1を60分で開始</button><button class="ghost" onclick="renderView('books');showView('books')">解説本10冊を読む</button><button class="ghost" onclick="renderView('analysis');showView('analysis')">再現仕様を見る</button></div></div><div class="hero-stat"><b>10 × 100</b><span>10回・各100点</span><b style="margin-top:22px">10 pages</b><span>表紙＋本番型10ページ構成</span><b style="margin-top:22px">60:00</b><span>試験時間</span></div></div>
  <div class="section-title"><h2>採点構造</h2><span class="fine">近年形式に合わせた固定配点</span></div><div class="format-grid">${[[1,'用語','10'],[2,'対応','10'],[3,'基礎・計算','10'],[4,'プログラム','15'],[5,'流れ図','15'],[6,'流れ図','15'],[7,'総合流れ図','25']].map(x=>`<div class="format-chip"><span>【${x[0]}】${x[1]}</span><b>${x[2]}点</b></div>`).join('')}</div>
  <div class="section-title"><h2>本番に寄せたところ</h2></div><div class="card"><div class="two-col"><div><b>問題冊子</b><ul><li>1ページ目に【1】【2】</li><li>2ページ目に【3】</li><li>【4】はマクロ言語のプログラム2題で2ページ</li><li>【5】～【7】は「説明ページ→流れ図ページ」</li><li>配列表・入力レコード・実行結果例・解答群を併記</li></ul></div><div><b>解答・採点</b><ul><li>問題上ではなく別の解答用紙に記入</li><li>【7】に複数解答セルあり</li><li>複数セルは全て正解で5点</li><li>答案を自動保存</li><li>採点後は全35採点欄に解説</li></ul></div></div></div>`;
 }
 function renderMocks(){
  const el=$('#mocks');
- el.innerHTML=`<div class="section-title"><div><h2>本番形式模試 10回</h2><div class="fine">各回 10ページ / 35採点欄 / 100点 / 60分</div></div></div><div class="mock-grid">${EXAMS.map(e=>{const r=getResult(e.n);return `<div class="card mock-card"><div class="mock-no">${e.n}</div><div class="mock-meta"><h3>${e.title}</h3><p>${esc(e.scenario)}</p><p>【4】整列・探索・順位付け → 【5】～【7】業務処理</p></div><div><div class="score-pill ${r?(r.score>=70?'pass':'fail'):''}">${r?`${r.score}点`:'未受験'}</div><button class="ghost small" onclick="startExam(${e.n})">${r?'もう一度':'開始'}</button></div></div>`}).join('')}</div>`;
+ el.innerHTML=`<div class="section-title"><div><h2>本番形式模試 10回</h2><div class="fine">各回 10ページ / 35採点欄 / 100点 / 60分</div></div></div><div class="mock-grid">${EXAMS.map(e=>{const r=getResult(e.n);return `<div class="card mock-card"><div class="mock-no">${e.n}</div><div class="mock-meta"><h3>${e.title}</h3><p>${esc(e.scenario)}</p><p>【4】整列・探索・順位付け → 【5】～【7】業務処理</p></div><div class="mock-actions"><div class="score-pill ${r?(r.score>=70?'pass':'fail'):''}">${r?`${r.score}点`:'未受験'}</div><button class="primary small" onclick="startExam(${e.n})">${r?'もう一度':'開始'}</button><button class="ghost small" onclick="openBook(${e.n})">解説本</button></div></div>`}).join('')}</div>`;
 }
 const PAST_YEARS={74:2025,73:2025,72:2024,71:2024,70:2024,69:2023,68:2023,67:2022,66:2022,65:2021,64:2021,63:2020,62:2019,61:2019,60:2019,59:2018,58:2018,57:2017,56:2017,55:2016,54:2016,53:2015,52:2015,51:2014,50:2014,49:2013,48:2013,47:2012,46:2012,45:2011,44:2011,43:2010,42:2010,41:2009,40:2009,39:2008};
+let bookLoadSeq=0;
+function renderBooks(){
+ bookLoadSeq++;
+ const el=$('#books');
+ el.innerHTML=`<div class="section-title"><div><h2>各回の解説本</h2><div class="fine">第1回から第10回まで、各回のテーマを教科書形式でまとめています。</div></div></div><p class="muted">設問ごとの正解を並べた解説ではなく、用語・アルゴリズム・集計処理を順につかむための読み物です。模試を解く前の予習にも、解いた後の整理にも使えます。</p><div class="book-index-grid">${EXAMS.map(e=>`<article class="card book-index-card"><div class="book-card-label">${e.n}</div><div><h3>第${e.n}回 解説本</h3><p>${esc(e.scenario)}</p></div><button class="primary small book-open" onclick="openBook(${e.n})">読む</button></article>`).join('')}</div>`;
+}
+async function openBook(round){
+ showView('books');
+ const request=++bookLoadSeq;
+ const el=$('#books');
+ el.innerHTML=`<div class="card book-status" role="status">第${round}回の解説本を読み込んでいます…</div>`;
+ try{
+  const response=await fetch(`./explanation-books/${String(round).padStart(2,'0')}.json`);
+  if(!response.ok)throw new Error(`HTTP ${response.status}`);
+  const book=await response.json();
+  if(request!==bookLoadSeq||STATE.view!=='books')return;
+  if(book.round!==round||!Array.isArray(book.chapters)||book.chapters.length===0)throw new Error('解説本データが正しくありません');
+  const chapterHtml=book.chapters.map((chapter,index)=>`<section class="card book-chapter" id="book-chapter-${index+1}" aria-labelledby="book-heading-${index+1}"><div class="kicker">第${index+1}章</div><h2 id="book-heading-${index+1}">${esc(chapter.title)}</h2>${(chapter.paragraphs||[]).map(paragraph=>`<p>${esc(paragraph)}</p>`).join('')}</section>`).join('');
+  const tocHtml=book.chapters.map((chapter,index)=>`<li><a href="#book-chapter-${index+1}">${esc(chapter.title)}</a></li>`).join('');
+  const takeawaysHtml=Array.isArray(book.takeaways)&&book.takeaways.length?`<section class="card book-takeaways"><h2>読み終えたら確認すること</h2><ul>${book.takeaways.map(item=>`<li>${esc(item)}</li>`).join('')}</ul></section>`:'';
+  el.innerHTML=`<div class="book-reader-actions"><button class="ghost" onclick="renderBooks()">← 解説本一覧</button><button class="ghost" onclick="window.print()">印刷 / PDF</button></div><article class="book-reader"><header class="card book-reader-head"><div class="kicker">全商プログラミング1級・模擬試験</div><h1>${esc(book.title)}</h1><p>${esc(book.lead)}</p><div class="fine" style="margin-top:12px">模試の各設問を順に解説するのではなく、この回で使う考え方を章ごとに学びます。</div></header><nav class="card book-toc" aria-label="目次"><h2>目次</h2><ol>${tocHtml}</ol></nav>${chapterHtml}${takeawaysHtml}</article>`;
+ }catch(error){
+  if(request!==bookLoadSeq||STATE.view!=='books')return;
+  el.innerHTML=`<div class="card book-status" role="alert"><p>解説本を読み込めませんでした。</p><button class="ghost" onclick="renderBooks()">解説本一覧へ戻る</button></div>`;
+ }
+}
 function pastUrl(n){return `https://zensho.or.jp/puf/download/exam/pastexam/${PAST_YEARS[n]}/info_${n}_1_pro.pdf`}
 function renderPast(){
  const el=$('#past');
@@ -541,7 +609,7 @@ function renderAnalysis(){
  <div class="section-title"><h2>頻出の処理パターン</h2></div><div class="card"><div class="two-col"><div><b>【4】</b><ul><li>交換法（バブル）</li><li>選択法</li><li>挿入法</li><li>二分探索（反復）</li><li>順位付け</li></ul></div><div><b>【5】～【7】</b><ul><li>添字0を合計・作業領域に利用</li><li>整数除算 / Mod によるコード分解・期間分類</li><li>コントロールブレイク / 境界値による区分探索</li><li>マスタ探索→添字変換→クロス集計</li><li>関連配列・間接配列を用いた複数キー整列</li><li>Top-N抽出 / 構成比 / 対話型の指定条件分析</li></ul></div></div></div>
  <div class="card" style="margin-top:12px"><b>重要：</b>このサイトは公式問題の転載・言い換えではなく、<b>構成・採点・要求される処理パターン</b>を分析して作った独自問題。公式問題は「公式過去問」から原本を開ける。</div>`;
 }
-function renderView(id){({home:renderHome,mocks:renderMocks,past:renderPast,analysis:renderAnalysis}[id]||(()=>{}))()}
+function renderView(id){({home:renderHome,mocks:renderMocks,books:renderBooks,past:renderPast,analysis:renderAnalysis}[id]||(()=>{}))()}
 
 function startExam(n){
  STATE.exam=EXAMS[n-1];STATE.page=1;const p=getProgress(n);if(!p.deadline||p.deadline<Date.now()){p.deadline=Date.now()+3600_000;p.answers={};setProgress(n,p)}
