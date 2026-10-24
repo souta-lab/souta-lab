@@ -66,11 +66,26 @@ Building across layers — **web apps, AI agents, native graphics, and Linux sys
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg" alt="Capacitor" title="Capacitor" width="42" height="42">
 </p>
 
+**Operating systems & distros**
+
+<p align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/archlinux/archlinux-original.svg" alt="Arch Linux" title="Arch Linux" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fedora/fedora-original.svg" alt="Fedora" title="Fedora" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redhat/redhat-original.svg" alt="Red Hat Enterprise Linux" title="Red Hat Enterprise Linux" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/debian/debian-original.svg" alt="Debian Sid" title="Debian Sid" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linuxmint/linuxmint-original.svg" alt="Linux Mint" title="Linux Mint" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ubuntu/ubuntu-original.svg" alt="Ubuntu" title="Ubuntu" width="42" height="42">
+  <img src="https://cdn.simpleicons.org/lubuntu/0068C8" alt="Lubuntu" title="Lubuntu" width="42" height="42">
+  <img src="https://cdn.simpleicons.org/devuan/004489" alt="Devuan" title="Devuan" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg" alt="Windows" title="Windows" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chrome/chrome-original.svg" alt="ChromeOS" title="ChromeOS" width="42" height="42">
+</p>
+
+<sub>Arch Linux · Fedora · RHEL · Debian Sid · Linux Mint · Ubuntu · Lubuntu · Devuan · Windows · ChromeOS (Chrome logo)</sub>
+
 **Systems, graphics & tooling**
 
 <p align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux" title="Linux" width="42" height="42">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/debian/debian-original.svg" alt="Debian" title="Debian" width="42" height="42">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" title="Git" width="42" height="42">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg" alt="GitHub Actions" title="GitHub Actions" width="42" height="42">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg" alt="Bash" title="Bash" width="42" height="42">
@@ -81,7 +96,7 @@ Building across layers — **web apps, AI agents, native graphics, and Linux sys
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original.svg" alt="npm" title="npm" width="42" height="42">
 </p>
 
-<sub>Hands-on technologies across frontend, backend, infrastructure, and graphics. Icons: <a href="https://github.com/devicons/devicon">Devicon</a>.</sub>
+<sub>Hands-on technologies across frontend, backend, infrastructure, and graphics. Icons: <a href="https://github.com/devicons/devicon">Devicon</a> &amp; <a href="https://github.com/simple-icons/simple-icons">Simple Icons</a>.</sub>
 
 ## 🧪 More experiments
 
