@@ -34,38 +34,54 @@ Building across layers — **web apps, AI agents, native graphics, and Linux sys
 
 ## 🧰 Tech stack
 
-<!-- Icon IDs are from https://github.com/LelouchFR/skill-icons.
-     GitHub supports <picture> for light/dark theme switching. -->
+<!-- Each icon is a separate SVG so GitHub can render and wrap them independently. -->
 
 **Languages**
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://go-skill-icons.vercel.app/api/icons?i=typescript,javascript,python,golang,java,c,cs,dart&amp;theme=dark">
-  <source media="(prefers-color-scheme: light)" srcset="https://go-skill-icons.vercel.app/api/icons?i=typescript,javascript,python,golang,java,c,cs,dart&amp;theme=light">
-  <img alt="TypeScript, JavaScript, Python, Go, Java, C, C#, Dart" src="https://go-skill-icons.vercel.app/api/icons?i=typescript,javascript,python,golang,java,c,cs,dart&amp;theme=dark" height="48">
-</picture>
+<p align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" title="TypeScript" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" title="HTML5" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" title="CSS3" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" title="Python" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" alt="Go" title="Go" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" title="Java" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" alt="Dart" title="Dart" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" title="C" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#" title="C#" width="42" height="42">
+</p>
 
 **Web & apps**
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://go-skill-icons.vercel.app/api/icons?i=react,nextjs,astro,vite,tailwindcss,flutter,bun,cloudflare&amp;theme=dark">
-  <source media="(prefers-color-scheme: light)" srcset="https://go-skill-icons.vercel.app/api/icons?i=react,nextjs,astro,vite,tailwindcss,flutter,bun,cloudflare&amp;theme=light">
-  <img alt="React, Next.js, Astro, Vite, Tailwind CSS, Flutter, Bun, Cloudflare" src="https://go-skill-icons.vercel.app/api/icons?i=react,nextjs,astro,vite,tailwindcss,flutter,bun,cloudflare&amp;theme=dark" height="48">
-</picture>
-
-**Systems & tooling**
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://go-skill-icons.vercel.app/api/icons?i=linux,debian,git,githubactions,sqlite,android,ghostty,bash&amp;theme=dark">
-  <source media="(prefers-color-scheme: light)" srcset="https://go-skill-icons.vercel.app/api/icons?i=linux,debian,git,githubactions,sqlite,android,ghostty,bash&amp;theme=light">
-  <img alt="Linux, Debian, Git, GitHub Actions, SQLite, Android, Ghostty, Bash" src="https://go-skill-icons.vercel.app/api/icons?i=linux,debian,git,githubactions,sqlite,android,ghostty,bash&amp;theme=dark" height="48">
-</picture>
-
-<p>
-  <img alt="Vulkan 1.2+" src="https://img.shields.io/badge/graphics-Vulkan%201.2%2B-AC162C?style=flat-square&amp;logo=vulkan&amp;logoColor=white">
-  <img alt="Wayland" src="https://img.shields.io/badge/desktop-Wayland-FFBC00?style=flat-square&amp;logo=wayland&amp;logoColor=black">
-  <img alt="Cloudflare Workers" src="https://img.shields.io/badge/edge-Cloudflare%20Workers-F38020?style=flat-square&amp;logo=cloudflareworkers&amp;logoColor=white">
+<p align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" title="React" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg" alt="Astro" title="Astro" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vite/vite-original.svg" alt="Vite" title="Vite" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" title="Tailwind CSS" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" alt="Flutter" title="Flutter" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" title="Node.js" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg" alt="Bun" title="Bun" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg" alt="Cloudflare" title="Cloudflare" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflareworkers/cloudflareworkers-original.svg" alt="Cloudflare Workers" title="Cloudflare Workers" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg" alt="Capacitor" title="Capacitor" width="42" height="42">
 </p>
+
+**Systems, graphics & tooling**
+
+<p align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux" title="Linux" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/debian/debian-original.svg" alt="Debian" title="Debian" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" title="Git" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg" alt="GitHub Actions" title="GitHub Actions" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg" alt="Bash" title="Bash" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gradle/gradle-original.svg" alt="Gradle" title="Gradle" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg" alt="Android" title="Android" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" alt="SQLite" title="SQLite" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vulkan/vulkan-original.svg" alt="Vulkan" title="Vulkan" width="42" height="42">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original.svg" alt="npm" title="npm" width="42" height="42">
+</p>
+
+<sub>Hands-on technologies across frontend, backend, infrastructure, and graphics. Icons: <a href="https://github.com/devicons/devicon">Devicon</a>.</sub>
 
 ## 🧪 More experiments
 
