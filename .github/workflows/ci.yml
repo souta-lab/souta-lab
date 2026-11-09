@@ -19,8 +19,16 @@ jobs:
       - name: Check links are reachable
         run: |
           fail=0
+          ua='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36'
           while read -r url; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 -L "$url") || code="000"
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 -L -A "$ua" "$url") || code="000"
+            case "$code" in
+              2*|3*) ;;
+              *)
+                sleep 3
+                code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 -L -A "$ua" "$url") || code="000"
+                ;;
+            esac
             echo "$code $url"
             case "$code" in 2*|3*) ;; *) echo "dead link: $url ($code)"; fail=1;; esac
           done < links.txt
