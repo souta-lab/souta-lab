@@ -12,9 +12,9 @@ jobs:
       - name: Validate profile README
         run: |
           test -f README.md
-          grep -q '^# souta-lab' README.md
+          grep -qE '^# .*s0u7a' README.md
           echo "--- https links ---"
-          grep -o 'https://[^) ]*' README.md | sort -u | tee links.txt
+          grep -o 'https://[^") ]*' README.md | sed 's/&amp;/\&/g' | sort -u | tee links.txt
           test -s links.txt
       - name: Check links are reachable
         run: |
