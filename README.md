@@ -117,7 +117,7 @@ Building across layers — **web apps, AI agents, native graphics, and Linux sys
 ## 🤝 Open source & affiliations
 
 - **[Meltype](https://github.com/yksr-melt/Meltype)** — open-source contributor.
-- **[nissmick](https://github.com/nissmick)** (Rurines, SNS) — past contributor to nissmick-core.
+- **[nissmick](https://github.com/nissmick)** (Rurines, SNS) — org member; contributor to nissmick-core.
 - **[eQuake-Live](https://github.com/eQuake-Live)** — member of the earthquake early-warning project.
 
 ## 📫 Contact
