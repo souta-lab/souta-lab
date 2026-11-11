@@ -6,6 +6,8 @@
 
 Building across layers — **web apps, AI agents, native graphics, and Linux systems.**
 
+🌐 **Portfolio: [s0u7a.f5.si](https://s0u7a.f5.si/)** — projects, live web apps, and OSS activity in one place.
+
 <p>
   <a href="https://github.com/souta-lab?tab=followers">
     <img alt="GitHub followers" src="https://img.shields.io/github/followers/souta-lab?style=flat-square&amp;logo=github&amp;label=followers&amp;color=8B5CF6">
@@ -27,7 +29,7 @@ Building across layers — **web apps, AI agents, native graphics, and Linux sys
 | :--- | :--- |
 | **[Celtium](https://github.com/souta-lab/celtium)** | Experimental **GL-less Vulkan renderer** for Minecraft 1.12.2 / CleanroomMC. Native rendering paths; correctness, compatibility and performance are still being validated. |
 | **[minecraft-jev-agent](https://github.com/souta-lab/minecraft-jev-agent)** | Embodied Minecraft agent with a **typed decision plane**, verified state transitions, and a Bun / Mineflayer runtime. |
-| **[pi-muse](https://github.com/souta-lab/pi-muse)** | An open, hackable **Muse Code-compatible agent harness** built on Pi's runtime. |
+| **[pi-muse](https://github.com/souta-lab/pi-muse)** | A fork of Pi that runs Meta's **Muse Code** harness interface on Pi's runtime — **Muse Spark** on an open harness. |
 | **[agate-bakasu-susfs](https://github.com/souta-lab/agate-bakasu-susfs)** | **Android/Linux kernel engineering** for the Xiaomi 11T, including a non-GKI SUSFS port. |
 | **[Meltype](https://github.com/yksr-melt/Meltype)** | **Contributor** to an IME that seamlessly mixes Japanese and English input. |
 | **[astro-souta-website](https://github.com/souta-lab/astro-souta-website)** | Personal site built with **Astro, TypeScript and Tailwind CSS**. |
@@ -122,5 +124,5 @@ Building across layers — **web apps, AI agents, native graphics, and Linux sys
 
 ## 📫 Contact
 
-Open to remote and full-time opportunities. The easiest way to reach me is to **[open an issue on this profile repository](https://github.com/souta-lab/souta-lab/issues/new)**.
+Open to remote and full-time opportunities. Portfolio and live demos: **[s0u7a.f5.si](https://s0u7a.f5.si/)**. The easiest way to reach me is to **[open an issue on this profile repository](https://github.com/souta-lab/souta-lab/issues/new)**.
 
