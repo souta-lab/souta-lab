@@ -17,7 +17,7 @@ Building across layers — **web apps, AI agents, native graphics, and Linux sys
   <img alt="Remote work welcome" src="https://img.shields.io/badge/remote-OK-0F766E?style=flat-square">
 </p>
 
-[Projects](#-featured-work) · [Tech stack](#-tech-stack) · [Open source](#-open-source--affiliations) · [Contact](#-contact)
+[Projects](#-featured-work) · [Tech stack](#-tech-stack) · [Open source](#-open-source--affiliations) · [Certifications](#-certifications) · [Contact](#-contact)
 
 </div>
 
@@ -28,11 +28,13 @@ Building across layers — **web apps, AI agents, native graphics, and Linux sys
 | Project | What I'm building |
 | :--- | :--- |
 | **[Celtium](https://github.com/souta-lab/celtium)** | Experimental **GL-less Vulkan renderer** for Minecraft 1.12.2 / CleanroomMC. Native rendering paths; correctness, compatibility and performance are still being validated. |
+| **[QUEST](https://github.com/souta-lab/quest-pwa)** | Exam-prep PWA for Japan's Common Test: AI-generated questions with independent answer verification, FSRS-based review scheduling, and handwritten memos. Cloudflare Workers + D1. Live at [common-test.s0u7a.f5.si](https://common-test.s0u7a.f5.si/). |
+| **[swayrtc](https://github.com/souta-lab/swayrtc)** | WebRTC remote desktop for Sway. Cross-GPU zero-copy capture (AMD VPP → Intel VA-API encode) at 61 fps, input latency p50 ~19–20 ms. |
+| **[zerocap](https://github.com/souta-lab/zerocap)** | Portable Sway/Wayland capture + H.264 encode with VA-API capability planning — the capture pipeline split out of swayrtc. |
 | **[minecraft-jev-agent](https://github.com/souta-lab/minecraft-jev-agent)** | Embodied Minecraft agent with a **typed decision plane**, verified state transitions, and a Bun / Mineflayer runtime. |
-| **[pi-muse](https://github.com/souta-lab/pi-muse)** | A fork of Pi that runs Meta's **Muse Code** harness interface on Pi's runtime — **Muse Spark** on an open harness. |
+| **[pi-muse](https://github.com/souta-lab/pi-muse)** | A fork of Pi that runs Meta's **Muse Code** harness interface on Pi's runtime — **Muse Spark** on an open harness. (Archived.) |
 | **[agate-bakasu-susfs](https://github.com/souta-lab/agate-bakasu-susfs)** | **Android/Linux kernel engineering** for the Xiaomi 11T, including a non-GKI SUSFS port. |
-| **[Meltype](https://github.com/yksr-melt/Meltype)** | **Contributor** to an IME that seamlessly mixes Japanese and English input. |
-| **[astro-souta-website](https://github.com/souta-lab/astro-souta-website)** | Personal site built with **Astro, TypeScript and Tailwind CSS**. |
+| **[Meltype](https://github.com/yksr-melt/Meltype)** | **Contributor** to an IME that seamlessly mixes Japanese and English input — 9 PRs merged, 44 commits on main. |
 
 ## 🧰 Tech stack
 
@@ -118,9 +120,22 @@ Building across layers — **web apps, AI agents, native graphics, and Linux sys
 
 ## 🤝 Open source & affiliations
 
-- **[Meltype](https://github.com/yksr-melt/Meltype)** — open-source contributor.
+- **[Meltype](https://github.com/yksr-melt/Meltype)** — contributor: 9 PRs merged, 44 commits on main.
+- **[RustXNG](https://github.com/sahenjp/RustXNG)** — contributor: 2 fix PRs merged, 2 more in review.
+- **[CleanroomMC](https://github.com/CleanroomMC)** — contributor to Cleanroom and Fugue (PRs in review).
+- **[morsh](https://github.com/fokx/morsh)** — contributor: session-hygiene PR and issue reports upstream.
 - **[nissmick](https://github.com/nissmick)** (Rurines, SNS) — org member; contributor to nissmick-core.
 - **[eQuake-Live](https://github.com/eQuake-Live)** — member of the earthquake early-warning project.
+
+## 📜 Certifications
+
+- ITパスポート（IT Passport, 800 points）
+- 全商情報処理検定 ビジネス情報部門 1級・プログラミング部門 2級
+- 全商簿記実務検定 1級（原価計算）
+- 全商ビジネス計算実務検定 1級（速度部門）
+- 全商ビジネス文書実務検定 1級（速度部門）
+- 全商英語検定 2級
+- 全商商業経済検定 2級（マーケティング）
 
 ## 📫 Contact
 
