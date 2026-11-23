@@ -6,7 +6,7 @@
 
 Building across layers — **web apps, AI agents, native graphics, and Linux systems.**
 
-🌐 **Portfolio: [s0u7a.f5.si](https://s0u7a.f5.si/)** — projects, live web apps, and OSS activity in one place.
+🌐 **Portfolio: [s0u7a.net](https://s0u7a.net/)** — projects, live web apps, and OSS activity in one place.
 
 <p>
   <a href="https://github.com/souta-lab?tab=followers">
@@ -28,7 +28,7 @@ Building across layers — **web apps, AI agents, native graphics, and Linux sys
 | Project | What I'm building |
 | :--- | :--- |
 | **[Celtium](https://github.com/souta-lab/celtium)** | Experimental **GL-less Vulkan renderer** for Minecraft 1.12.2 / CleanroomMC. Native rendering paths; correctness, compatibility and performance are still being validated. |
-| **[QUEST](https://github.com/souta-lab/quest-pwa)** | Exam-prep PWA for Japan's Common Test: AI-generated questions with independent answer verification, FSRS-based review scheduling, and handwritten memos. Cloudflare Workers + D1. Live at [common-test.s0u7a.f5.si](https://common-test.s0u7a.f5.si/). |
+| **[QUEST](https://github.com/souta-lab/quest-pwa)** | Exam-prep PWA for Japan's Common Test: AI-generated questions with independent answer verification, FSRS-based review scheduling, and handwritten memos. Cloudflare Workers + D1. Live at [common-test.s0u7a.net](https://common-test.s0u7a.net/). |
 | **[swayrtc](https://github.com/souta-lab/swayrtc)** | WebRTC remote desktop for Sway. Cross-GPU zero-copy capture (AMD VPP → Intel VA-API encode) at 61 fps, input latency p50 ~19–20 ms. |
 | **[zerocap](https://github.com/souta-lab/zerocap)** | Portable Sway/Wayland capture + H.264 encode with VA-API capability planning — the capture pipeline split out of swayrtc. |
 | **[minecraft-jev-agent](https://github.com/souta-lab/minecraft-jev-agent)** | Embodied Minecraft agent with a **typed decision plane**, verified state transitions, and a Bun / Mineflayer runtime. |
@@ -139,5 +139,5 @@ Building across layers — **web apps, AI agents, native graphics, and Linux sys
 
 ## 📫 Contact
 
-Open to remote and full-time opportunities. Portfolio and live demos: **[s0u7a.f5.si](https://s0u7a.f5.si/)**. The easiest way to reach me is to **[open an issue on this profile repository](https://github.com/souta-lab/souta-lab/issues/new)**.
+Open to remote and full-time opportunities. Portfolio and live demos: **[s0u7a.net](https://s0u7a.net/)**. The easiest way to reach me is to **[open an issue on this profile repository](https://github.com/souta-lab/souta-lab/issues/new)**.
 
