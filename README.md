@@ -27,7 +27,7 @@ Building across layers — **web apps, AI agents, native graphics, and Linux sys
 
 | Project | What I'm building |
 | :--- | :--- |
-| **[Celtium](https://github.com/souta-lab/celtium)** | Experimental **GL-less Vulkan renderer** for Minecraft 1.12.2 / CleanroomMC. Native rendering paths; correctness, compatibility and performance are still being validated. |
+| **[Celtium](https://github.com/souta-lab/facet)** | Experimental **GL-less Vulkan renderer** for Minecraft 1.12.2 / CleanroomMC. Native rendering paths; correctness, compatibility and performance are still being validated. |
 | **[QUEST](https://github.com/souta-lab/quest-pwa)** | Exam-prep PWA for Japan's Common Test: AI-generated questions with independent answer verification, FSRS-based review scheduling, and handwritten memos. Cloudflare Workers + D1. Live at [common-test.s0u7a.net](https://common-test.s0u7a.net/). |
 | **[swayrtc](https://github.com/souta-lab/swayrtc)** | WebRTC remote desktop for Sway. Cross-GPU zero-copy capture (AMD VPP → Intel VA-API encode) at 61 fps, input latency p50 ~19–20 ms. |
 | **[zerocap](https://github.com/souta-lab/zerocap)** | Portable Sway/Wayland capture + H.264 encode with VA-API capability planning — the capture pipeline split out of swayrtc. |
